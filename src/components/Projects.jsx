@@ -4,7 +4,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-10 min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-white flex justify-center items-center overflow-hidden"
+      className="relative py-20 min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-white flex justify-center items-center overflow-hidden"
     >
       {/* Iceberg */}
       <div className="absolute left-1/2 lg:left-1/5 transform -translate-x-1/3 mb-610 z-0">
@@ -29,7 +29,7 @@ export function Projects() {
               rate data using a sensor. It's a great tool for anyone looking to
               track their fitness or health.
             </p>
-            <p className="text-lg text-neutral-300 my-4">
+            <p>
               The pulse sensor's data is transmitted to an OLED display, Blynk,
               and a database, from which it is retrieved and displayed on a
               website.
@@ -61,7 +61,7 @@ export function Projects() {
             </p>
             <div className="mt-4">
               <h3 className="font-semibold">Technologies used:</h3>
-              <ul className=" ml-5">
+              <ul className="list-disc ml-5">
                 <li>React</li>
                 <li>CSS (Tailwind)</li>
                 <li>JavaScript</li>
@@ -84,7 +84,7 @@ export function Projects() {
             </p>
             <div className="mt-4">
               <h3 className="font-semibold">Technologies used:</h3>
-              <ul className=" ml-5">
+              <ul className="list-disc ml-5">
                 <li>WordPress</li>
                 <li>Divi Builder</li>
                 <li>CSS (Custom Styling)</li>
