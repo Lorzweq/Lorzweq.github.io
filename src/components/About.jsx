@@ -18,7 +18,7 @@ export function About() {
         {/* Heading */}
         <motion.h2
           ref={ref}
-          className="text-4xl font-semibold mb-12"
+          className="text-4xl font-semibold mb-12 mt-28"
           initial={{ opacity: 0 }}
           animate={{
             opacity: inView ? 1 : 0,

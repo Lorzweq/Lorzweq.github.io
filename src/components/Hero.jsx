@@ -166,7 +166,7 @@ export function Hero() {
             </motion.span>
           ))}
         </div>
-        <div className="absolute  left-1/500 lg:left-1/5  top-70 lg:top-120 transform -translate-x-1/3 mb-550 z-10 overflow-hidden">
+        <div className="absolute  left-1/500 lg:left-1/5  top-70 lg:top-70 transform -translate-x-1/3 mb-580 z-10 overflow-hidden">
           <Iceberg />
         </div>
       </div>

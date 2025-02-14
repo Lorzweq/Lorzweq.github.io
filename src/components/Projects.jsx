@@ -4,7 +4,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-20 min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-white flex justify-center items-center overflow-hidden"
+      className="relative py-10 min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-white flex justify-center items-center overflow-hidden"
     >
       {/* Iceberg */}
       <div className="absolute left-1/2 lg:left-1/5 transform -translate-x-1/3 mb-610 z-0">
