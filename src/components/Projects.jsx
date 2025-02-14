@@ -61,7 +61,7 @@ export function Projects() {
             </p>
             <div className="mt-4">
               <h3 className="font-semibold">Technologies used:</h3>
-              <ul className="list-disc ml-5">
+              <ul className="">
                 <li>React</li>
                 <li>CSS (Tailwind)</li>
                 <li>JavaScript</li>
@@ -84,7 +84,7 @@ export function Projects() {
             </p>
             <div className="mt-4">
               <h3 className="font-semibold">Technologies used:</h3>
-              <ul className="list-disc ml-5">
+              <ul className="">
                 <li>WordPress</li>
                 <li>Divi Builder</li>
                 <li>CSS (Custom Styling)</li>
