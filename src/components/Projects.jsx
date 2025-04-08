@@ -9,17 +9,15 @@ export function Projects() {
     // Pulsesensor Project
     <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
       <h2 className="text-md font-bold text-blue-500 mb-4">Pulsesensor</h2>
-      <p className="text-sm text-neutral-300 mb-4">
-        Pulsesensor is a project designed to measure and monitor heart rate data using a sensor. It's a great tool for anyone looking to track their fitness or health.
-      </p>
-      <p>
+      <p className="text-xs text-neutral-300 mb-4">
+        Pulsesensor is a project designed to measure and monitor heart rate data using a sensor. It's a great tool for anyone looking to track their fitness or health.<br></br>
         The pulse sensor's data is transmitted to an OLED display, Blynk, and a database, from which it is retrieved and displayed on a website.
       </p>
       <a
         href="https://github.com/Lorzweq/PulseSensor"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-500 hover:text-blue-400 text-lg font-semibold mt-4 inline-block"
+        className="text-blue-500 hover:text-blue-400 text-xs font-semibold mt-4 inline-block"
       >
         View on GitHub
       </a>
@@ -30,12 +28,12 @@ export function Projects() {
       <h2 className="text-md font-semibold mb-4 text-blue-500">
         React-based Website for Tooling Company
       </h2>
-      <p className="text-sm">
+      <p className="text-xs">
         This project involves the development of a website for a small company specializing in selling tools designed to solve various work-related problems. I was responsible for the UX/UI design and front-end development, using React for a dynamic and responsive user experience. The website offers an intuitive navigation structure and user-friendly interface for customers to easily find the tools they need.
       </p>
       <div className="mt-4">
-        <h3 className="font-semibold">Technologies used:</h3>
-        <ul className="text-sm">
+        <h3 className="font-semibold text-sm">Technologies used:</h3>
+        <ul className="text-xs">
           <li>React</li>
           <li>CSS (Tailwind)</li>
           <li>JavaScript</li>
@@ -48,12 +46,12 @@ export function Projects() {
       <h2 className="text-md font-semibold mb-4 text-blue-500">
         WordPress Website Using Divi
       </h2>
-      <p className="text-sm">
+      <p className="text-xs">
         For this project, I built a WordPress website for a client using the Divi theme builder. Divi made it easy to create visually appealing layouts with drag-and-drop functionality, allowing the client to update and manage their site independently. I customized various elements, ensuring a professional, modern design tailored to the client's needs.
       </p>
       <div className="mt-4">
-        <h3 className="font-semibold">Technologies used:</h3>
-        <ul className="text-sm">
+        <h3 className="font-semibold text-sm">Technologies used:</h3>
+        <ul className="text-xs">
           <li>WordPress</li>
           <li>Divi Builder</li>
           <li>CSS (Custom Styling)</li>
@@ -66,12 +64,12 @@ export function Projects() {
       <h2 className="text-md font-semibold mb-4 text-blue-500">
         ClothShop - E-commerce Platform
       </h2>
-      <p className="text-sm">
+      <p className="text-xs">
         ClothShop is a modern e-commerce platform built with React and Vite. It allows users to browse products, add them to their cart, make purchases, and view their shopping history. The platform also includes admin and marketing dashboards for managing users and creating marketing posts.
       </p>
       <div className="mt-4">
-        <h3 className="font-semibold ">Technologies used:</h3>
-        <ul className="text-sm">
+        <h3 className="font-semibold text-sm">Technologies used:</h3>
+        <ul className="text-xs">
           <li>React, Vite, Tailwind CSS</li>
           <li>Supabase (database and authentication)</li>
           <li>Routing: React Router</li>
@@ -80,7 +78,7 @@ export function Projects() {
           href="https://github.com/Lorzweq/ClothShop"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-400 text-lg font-semibold mt-4 inline-block"
+          className="text-blue-500 hover:text-blue-400 text-xs font-semibold mt-4 inline-block"
         >
           View on GitHub
         </a>
@@ -92,12 +90,12 @@ export function Projects() {
       <h2 className="text-md font-semibold mb-4 text-blue-500">
       React Carousel Component
       </h2>
-      <p className="text-sm">
+      <p className="text-xs">
       A stylish and customizable 3D carousel component built with React. Supports any JSX elements (images, text) and includes smooth rotation and depth effects.
       </p>
       <div className="mt-4">
         <h3 className=" text-sm">Technologies used:</h3>
-        <ul className="text-sm">
+        <ul className="text-xs">
           <li>React, Vite, CSS</li>
           <li>JavaScript</li>
         </ul>
@@ -105,7 +103,7 @@ export function Projects() {
           href="https://github.com/Lorzweq/CarouselComponent"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-400 text-lg font-semibold mt-4 inline-block"
+          className="text-blue-500 hover:text-blue-400 text-xs font-semibold mt-4 inline-block"
         >
           View on GitHub
         </a>
@@ -149,13 +147,13 @@ export function Projects() {
      <h2 className="text-md font-semibold mb-4 text-blue-500">
      Modern component for displaying data and filter data
      </h2>
-     <p className="text-sm">
+     <p className="text-xs">
       
         A modern component for displaying data and filtering it using React. The component is designed to be reusable and customizable, allowing developers to easily integrate it into their projects.
      </p>
      <div className="mt-4">
-       <h3 className="font-semibold">Technologies used:</h3>
-       <ul className="text-sm">
+       <h3 className="font-semibold text-sm">Technologies used:</h3>
+       <ul className="text-xs">
          <li>React, Vite, TailwindCSS</li>
        </ul>
      </div>
