@@ -39,7 +39,7 @@ export function About() {
           }}
           transition={{ duration: 0.2 }}
         >
-          I'm 24 years old and almost graduated in Software Development. I have
+          I'm 24 years old and graduated in Software Development. I have
           a strong passion for programming, and in my free time, I enjoy going
           to the gym, swimming, and gaming. If I'm on my computer, you can bet
           I'm either coding or playing.
