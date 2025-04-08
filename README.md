@@ -1,13 +1,50 @@
-<<<<<<< HEAD
-# React + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my portfolio website! This project showcases my skills, projects, and experience as a developer. It is built with modern web technologies and features an interactive carousel, swipeable functionality for mobile devices, and a responsive design.
 
-Currently, two official plugins are available:
+## Live Demo
+You can view the live version of my portfolio here:  
+[**My Portfolio**](https://lorzweq.github.io/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# Lorzweq.github.io
-Own portfolio web-app
->>>>>>> c4f485a9e1ddf0cc642f885eaeb182a2c259c82a
+---
+
+## Project Structure
+The project is organized as follows:
+```
+Lorzweq.github.io\
+├── src\
+│   ├── components\
+│   │   ├── About.jsx
+│   │   ├── Contactjsx
+│   │   ├── Hero.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Carousel.jsx
+│   │   ├── Projects.jsx
+│   │   ├── iceberg.jsx
+│   ├── styles\
+│   │   ├── Carousel.css
+│   │   ├── global.css (assumed)
+│   ├── index.html
+│   ├── App.jsx
+├── package.json
+├── README.md (to be added or updated)
+├── .gitignore
+```
+
+
+---
+
+## Features
+- **Interactive Carousel**: A 3D carousel to showcase projects with smooth animations.
+- **Swipeable on Mobile**: Users can swipe through the carousel on mobile devices.
+- **Responsive Design**: Fully responsive layout for all screen sizes.
+- **Dynamic Project Cards**: Projects are displayed as cards with consistent styling.
+
+---
+
+## Technologies Used
+- **Frontend**: React, TailwindCSS, JavaScript
+- **Styling**: TailwindCSS, Custom CSS
+- **Deployment**: GitHub Pages
+
+
