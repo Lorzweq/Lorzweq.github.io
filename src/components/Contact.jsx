@@ -1,102 +1,171 @@
 import emailjs from "emailjs-com";
-
-function sendEmail(e) {
-  e.preventDefault();
-
-  emailjs
-    .sendForm(
-      "service_nllmmmf", // Your EmailJS service ID
-      "template_k3kbzei", // The ID of the template
-      e.target, // The form element
-      "7TWL_vWbwSLeSTOYN" // Your EmailJS user ID
-    )
-    .then(
-      (result) => {
-        console.log("Success:", result.text);
-        e.target.reset();
-      },
-      (error) => {
-        console.error("Error:", error.text);
-      }
-    );
-}
+import { useState } from "react";
 
 export function Contact() {
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  function sendEmail(e) {
+    e.preventDefault();
+    setSubmitStatus(null);
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        e.target,
+        import.meta.env.VITE_EMAILJS_USER_ID
+      )
+      .then(
+        (result) => {
+          e.target.reset();
+          setSubmitStatus("success");
+          setTimeout(() => setSubmitStatus(null), 5000);
+        },
+        (error) => {
+          setSubmitStatus("error");
+        }
+      );
+  }
+
   return (
-    <>
-      <section
-        id="contact"
-        className="relative py-20 min-h-screen bg-gradient-to-b from-gray-900 to-blue-950 text-white flex flex-col justify-center items-center overflow-hidden"
-      >
-        <h2 className="text-3xl font-bold mb-4 mt-28">Contact me</h2>
-        <p className="text-lg mb-10 text-center">
-          Have any questions or need help? Reach out to me, and I will get back
-          to you as soon as possible!
-        </p>
+    <section
+      id="contact"
+      className="relative py-20 min-h-screen bg-gradient-to-b from-slate-950/97 via-blue-950/95 to-slate-950 text-white overflow-hidden"
+    >
+      <div className="absolute -left-12 top-20 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="absolute right-0 bottom-10 h-72 w-72 rounded-full bg-blue-500/15 blur-3xl" />
 
-        <form
-          onSubmit={sendEmail}
-          className="w-full max-w-md bg-gray-800 p-6 rounded-lg shadow-lg"
-        >
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-white"
-              htmlFor="name"
-            >
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="from_name"
-              className="w-full p-3 mt-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your full name"
-            />
-          </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 mt-20">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-5xl font-bold text-cyan-100">Let&apos;s Build Something Great</h2>
+          <p className="text-base md:text-lg mt-4 text-blue-100/85 max-w-2xl mx-auto">
+            Open to developer opportunities and exciting projects. Send a
+            message or connect through one of the quick links.
+          </p>
+        </div>
 
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-white"
-              htmlFor="email"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="w-full p-3 mt-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email address"
-            />
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-stretch">
+          <aside className="lg:col-span-2 rounded-2xl border border-blue-800/60 bg-blue-950/35 p-6 md:p-7 backdrop-blur-sm">
+            <h3 className="text-xl font-semibold text-cyan-100">Quick Contact</h3>
+            <p className="text-sm text-blue-100/80 mt-2 mb-6">
+              Choose a channel that works best for you.
+            </p>
 
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-white"
-              htmlFor="message"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              className="w-full p-3 mt-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Your message here"
-            ></textarea>
-          </div>
+            <div className="space-y-3">
+              <a
+                href="https://www.linkedin.com/in/leevihanninen/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-xl border border-blue-600/60 bg-gradient-to-b from-blue-800/55 to-blue-950/60 px-4 py-3 text-blue-100 hover:from-blue-700/60 hover:to-blue-900/70 shadow-[inset_0_1px_0_rgba(191,219,254,0.18)] transition"
+              >
+                <span className="font-medium">LinkedIn</span>
+                <span className="text-sm">Professional profile</span>
+              </a>
+              <a
+                href="https://github.com/Lorzweq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-xl border border-slate-500/60 bg-slate-800/60 px-4 py-3 text-slate-100 hover:border-cyan-300 hover:text-cyan-200 transition"
+              >
+                <span className="font-medium">GitHub</span>
+                <span className="text-sm">Code and projects</span>
+              </a>
+            </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 py-3 px-4 rounded-lg text-white font-semibold hover:bg-blue-700 focus:outline-none"
+            <div className="mt-8 pt-6 border-t border-blue-900/80">
+              <p className="text-xs uppercase tracking-wider text-blue-200/70">
+                Also available on
+              </p>
+              <a
+                href="https://discord.com/users/lorzweq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex mt-3 items-center gap-2 rounded-lg border border-blue-700 px-3 py-2 text-sm text-blue-100 hover:border-cyan-300 hover:text-cyan-200 transition"
+              >
+                Discord
+              </a>
+            </div>
+          </aside>
+
+          <form
+            onSubmit={sendEmail}
+            className="lg:col-span-3 rounded-2xl border border-blue-800/70 bg-blue-950/45 p-6 md:p-7 shadow-lg"
           >
-            Send Message
-          </button>
-        </form>
+            <h3 className="text-xl font-semibold text-slate-100 mb-5">Send Message</h3>
 
-        <div className="mt-8 flex space-x-6 ">
-          <a href="https://discord.com/users/lorzweq">
-            <span className="[&>svg]:h-10 [&>svg]:w-10 hover:text-gray-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label
+                  className="block text-sm font-medium text-blue-100"
+                  htmlFor="name"
+                >
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="from_name"
+                  className="w-full p-3 mt-2 bg-slate-900/85 border border-blue-900 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label
+                  className="block text-sm font-medium text-blue-100"
+                  htmlFor="email"
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="w-full p-3 mt-2 bg-slate-900/85 border border-blue-900 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  placeholder="Enter your email address"
+                />
+              </div>
+            </div>
+
+            <div className="mb-5">
+              <label
+                className="block text-sm font-medium text-blue-100"
+                htmlFor="message"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                className="w-full p-3 mt-2 bg-slate-900/85 border border-blue-900 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                placeholder="Tell me about your project, role, or question"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full md:w-auto px-6 py-3 rounded-lg text-sm font-semibold text-slate-950 bg-cyan-400 hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition"
+            >
+              Send Message
+            </button>
+
+            {submitStatus === "success" && (
+              <div className="mt-4 p-3 rounded-lg bg-emerald-900/50 border border-emerald-600/50 text-emerald-100 text-sm">
+                Message sent successfully! I'll get back to you soon.
+              </div>
+            )}
+            {submitStatus === "error" && (
+              <div className="mt-4 p-3 rounded-lg bg-red-900/50 border border-red-600/50 text-red-100 text-sm">
+                Failed to send message. Please try again.
+              </div>
+            )}
+          </form>
+        </div>
+
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <a href="https://discord.com/users/lorzweq" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-11 w-11 rounded-full border border-blue-700 bg-blue-950/60 text-blue-100 hover:text-cyan-200 hover:border-cyan-300 transition">
+            <span className="[&>svg]:h-5 [&>svg]:w-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -106,9 +175,8 @@ export function Contact() {
               </svg>
             </span>
           </a>
-
-          <a href="https://github.com/Lorzweq">
-            <span className="[&>svg]:h-10 [&>svg]:w-10 hover:text-gray-300">
+          <a href="https://github.com/Lorzweq" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-11 w-11 rounded-full border border-blue-700 bg-blue-950/60 text-blue-100 hover:text-cyan-200 hover:border-cyan-300 transition">
+            <span className="[&>svg]:h-5 [&>svg]:w-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -118,8 +186,8 @@ export function Contact() {
               </svg>
             </span>
           </a>
-          <a href="https://www.linkedin.com/in/leevihanninen/">
-            <span className="[&>svg]:h-10 [&>svg]:w-10 hover:text-gray-300">
+          <a href="https://www.linkedin.com/in/leevihanninen/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-11 w-11 rounded-full border border-blue-700 bg-blue-950/60 text-blue-100 hover:text-cyan-200 hover:border-cyan-300 transition">
+            <span className="[&>svg]:h-5 [&>svg]:w-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -130,13 +198,14 @@ export function Contact() {
             </span>
           </a>
         </div>
-        <footer className="text-white py-4 mt-16 w-full text-center">
+
+        <footer className="text-blue-100/80 py-4 mt-10 w-full text-center text-sm">
           <p>
             &copy; {new Date().getFullYear()} Leevi Hänninen. All rights
             reserved.
           </p>
         </footer>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

@@ -1,80 +1,99 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const navItems = [
+  { id: "introduction", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 export function Navbar() {
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("introduction");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["introduction", "about", "projects", "contact"];
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+    if (!isMenuOpen) {
+      return;
+    }
 
-      sections.forEach((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-          }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const middleOfScreen = window.scrollY + window.innerHeight * 0.4;
+
+      for (const item of navItems) {
+        const section = document.getElementById(item.id);
+        if (!section) {
+          continue;
         }
-      });
+
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (middleOfScreen >= sectionTop && middleOfScreen < sectionBottom) {
+          setActiveSection(item.id);
+          break;
+        }
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
   return (
-    <nav className="fixed top-0 w-full z-20 text-center py-8 box-border shadow-md">
-      <div className="flex w-full flex-wrap items-center justify-between px-3 overflow-x-auto">
-        {/* Navbar Links */}
-        <div className="flex flex-row w-full items-center justify-center space-x-2 lg:space-x-8">
-          <a
-            href="#introduction"
-            className={`text-neutral-500 font-semibold rounded px-2 py-2 mx-2 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-100 hover:bg-blue-400 transition-colors ease-in-out duration-300 ${
-              activeSection === "introduction"
-                ? "bg-blue-400 border border-blue-500"
-                : "bg-gray-700 border border-blue-600"
-            }`}
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto">
+      <nav className="rounded-2xl border border-blue-700/60 bg-slate-950/70 backdrop-blur-md shadow-[0_8px_30px_rgba(2,6,23,0.55)]">
+        <div className="flex items-center justify-between px-3 py-2 md:hidden">
+          <p className="text-sm font-semibold tracking-wide text-cyan-100">
+            Navigation
+          </p>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-blue-700 text-slate-200 hover:border-cyan-300 hover:text-cyan-200 transition"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
           >
-            Introduction
-          </a>
-          <a
-            href="#about"
-            className={`text-neutral-500 font-semibold rounded px-2 py-2 mx-2 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-100 hover:bg-blue-400 transition-colors ease-in-out duration-300 ${
-              activeSection === "about"
-                ? "bg-blue-400  border border-blue-500"
-                : "bg-gray-700 border border-blue-600"
-            }`}
-          >
-            About
-          </a>
-          <a
-            href="#projects"
-            className={`text-neutral-500 font-semibold rounded px-2 py-2 mx-2 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-100 hover:bg-blue-400 transition-colors ease-in-out duration-300 ${
-              activeSection === "projects"
-                ? "bg-blue-400  border border-blue-500"
-                : "bg-gray-700 border border-blue-600"
-            }`}
-          >
-            Projects
-          </a>
-          <a
-            href="#contact"
-            className={`text-neutral-500 font-semibold rounded px-2 py-2 mx-2 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-100 hover:bg-blue-400 transition-colors ease-in-out duration-300 ${
-              activeSection === "contact"
-                ? "bg-blue-400  border border-blue-500"
-                : "bg-gray-700 border border-blue-600"
-            }`}
-          >
-            Contact
-          </a>
+            <span className="text-lg">{isMenuOpen ? "x" : "="}</span>
+          </button>
         </div>
-      </div>
-    </nav>
+
+        <ul
+          className={`${isMenuOpen ? "flex" : "hidden"} md:flex flex-col md:flex-row gap-1 p-2 md:p-1.5`}
+        >
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+
+            return (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`block rounded-lg px-4 py-2 text-sm font-medium transition ${
+                    isActive
+                      ? "bg-cyan-400 text-slate-950"
+                      : "text-slate-200 bg-gradient-to-b from-blue-900/45 to-blue-950/50 hover:from-blue-800/70 hover:to-blue-900/80 hover:text-cyan-100 ring-1 ring-blue-700/30"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </header>
   );
 }

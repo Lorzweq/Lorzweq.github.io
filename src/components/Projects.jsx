@@ -1,202 +1,320 @@
-import { Iceberg } from "./iceberg";
-import Carousel from "./Carousel";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useEffect } from "react";
+
+const projects = [
+  {
+    title: "PulseSensor",
+    summary:
+      "Heart-rate monitoring system with sensor data shown on OLED, Blynk, database, and web dashboard.",
+    tech: ["Embedded Sensor", "OLED", "Blynk", "Web Dashboard"],
+    githubUrl: "https://github.com/Lorzweq/PulseSensor",
+    liveDemoUrl: "",
+    previewImageUrl: "",
+    projectType: "hardware",
+    status: "Completed",
+  },
+  {
+    title: "ClothShop",
+    summary:
+      "Student e-commerce remake project inspired by Zalando. Includes checkout flow, shopping history, and admin/marketing dashboards, but is not publicly deployed.",
+    tech: ["React", "Vite", "Tailwind CSS", "Supabase", "React Router"],
+    githubUrl: "https://github.com/Lorzweq/ClothShop",
+    liveDemoUrl: "",
+    projectType: "website",
+    allowPreview: false,
+    status: "Student Project",
+  },
+  {
+    title: "React Carousel Component",
+    summary:
+      "Reusable 3D carousel component with smooth depth effects and support for any JSX content.",
+    tech: ["React", "Vite", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/Lorzweq/CarouselComponent",
+    projectType: "component",
+    status: "Open Source",
+  },
+  {
+    title: "iOS/Android App",
+    summary:
+      "Mobile application currently in development for both iOS and Android with a React Native stack.",
+    tech: ["React Native", "Tailwind CSS"],
+    projectType: "mobile",
+    status: "In Progress",
+  },
+  {
+    title: "Data Filter Component",
+    summary:
+      "Reusable React component for displaying data sets and filtering records with a clean UI.",
+    tech: ["React", "Vite", "Tailwind CSS"],
+    projectType: "component",
+    status: "Completed",
+  },
+  {
+    title: "JobTracker",
+    summary:
+      "Web application for tracking job applications, interviews, and offers with a clean UI and local storage persistence.",
+    tech: ["React", "Vite", "Tailwind CSS"],
+    githubUrl: "https://github.com/Lorzweq/JobTracker",
+    liveDemoUrl: "https://lorzweq.github.io/JobTracker/",
+    allowPreview: true,
+    projectType: "website",
+    status: "Completed",
+  },
+  {
+    title: "PowerPriceTracker",
+    summary:
+      "Web application that tracks and visualizes hourly electricity prices in Finland with data from Fingrid.",
+    tech: ["React", "Vite", "Tailwind CSS", "Fingrid API"],
+    githubUrl: "https://github.com/Lorzweq/Power-Price-Tracker",
+    liveDemoUrl: "https://lorzweq.github.io/Power-Price-Tracker/",
+    allowPreview: true,
+    projectType: "website",
+    status: "Completed",
+  }
+];
 
 export function Projects() {
-  const [showCarousel, setShowCarousel] = useState(true); // Carousel visibility state
+  const [demoMode, setDemoMode] = useState(false);
+  const [activePreview, setActivePreview] = useState(null);
 
-  const items = [
-    // Pulsesensor Project
-    <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
-      <h2 className="text-md font-bold text-blue-500 mb-4">Pulsesensor</h2>
-      <p className="text-xs text-neutral-300 mb-4">
-        Pulsesensor is a project designed to measure and monitor heart rate data using a sensor. It's a great tool for anyone looking to track their fitness or health.<br></br>
-        The pulse sensor's data is transmitted to an OLED display, Blynk, and a database, from which it is retrieved and displayed on a website.
-      </p>
-      <a
-        href="https://github.com/Lorzweq/PulseSensor"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-500 hover:text-blue-400 text-xs font-semibold mt-4 inline-block"
-      >
-        View on GitHub
-      </a>
-    </div>,
+  useEffect(() => {
+    if (!activePreview) {
+      return;
+    }
 
-    // React-based Website for Tooling Company
-    <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
-      <h2 className="text-md font-semibold mb-4 text-blue-500">
-        React-based Website for Tooling Company
-      </h2>
-      <p className="text-xs">
-        This project involves the development of a website for a small company specializing in selling tools designed to solve various work-related problems. I was responsible for the UX/UI design and front-end development, using React for a dynamic and responsive user experience. The website offers an intuitive navigation structure and user-friendly interface for customers to easily find the tools they need.
-      </p>
-      <div className="mt-4">
-        <h3 className="font-semibold text-sm">Technologies used:</h3>
-        <ul className="text-xs">
-          <li>React</li>
-          <li>CSS (Tailwind)</li>
-          <li>JavaScript</li>
-        </ul>
-      </div>
-    </div>,
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-    // WordPress Website Using Divi
-    <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
-      <h2 className="text-md font-semibold mb-4 text-blue-500">
-        WordPress Website Using Divi
-      </h2>
-      <p className="text-xs">
-        For this project, I built a WordPress website for a client using the Divi theme builder. Divi made it easy to create visually appealing layouts with drag-and-drop functionality, allowing the client to update and manage their site independently. I customized various elements, ensuring a professional, modern design tailored to the client's needs.
-      </p>
-      <div className="mt-4">
-        <h3 className="font-semibold text-sm">Technologies used:</h3>
-        <ul className="text-xs">
-          <li>WordPress</li>
-          <li>Divi Builder</li>
-          <li>CSS (Custom Styling)</li>
-        </ul>
-      </div>
-    </div>,
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [activePreview]);
 
-    // ClothShop - E-commerce Platform
-    <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
-      <h2 className="text-md font-semibold mb-4 text-blue-500">
-        ClothShop - E-commerce Platform
-      </h2>
-      <p className="text-xs">
-        ClothShop is a modern e-commerce platform built with React and Vite. It allows users to browse products, add them to their cart, make purchases, and view their shopping history. The platform also includes admin and marketing dashboards for managing users and creating marketing posts.
-      </p>
-      <div className="mt-4">
-        <h3 className="font-semibold text-sm">Technologies used:</h3>
-        <ul className="text-xs">
-          <li>React, Vite, Tailwind CSS</li>
-          <li>Supabase (database and authentication)</li>
-          <li>Routing: React Router</li>
-        </ul>
-        <a
-          href="https://github.com/Lorzweq/ClothShop"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-400 text-xs font-semibold mt-4 inline-block"
-        >
-          View on GitHub
-        </a>
-      </div>
-    </div>,
+  const hasEmbeddableDemo = (url) => {
+    if (!url) {
+      return false;
+    }
 
-    // React Carousel Component
-    <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
-      <h2 className="text-md font-semibold mb-4 text-blue-500">
-      React Carousel Component
-      </h2>
-      <p className="text-xs">
-      A stylish and customizable 3D carousel component built with React. Supports any JSX elements (images, text) and includes smooth rotation and depth effects.
-      </p>
-      <div className="mt-4">
-        <h3 className=" text-sm">Technologies used:</h3>
-        <ul className="text-xs">
-          <li>React, Vite, CSS</li>
-          <li>JavaScript</li>
-        </ul>
-        <a
-          href="https://github.com/Lorzweq/CarouselComponent"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-400 text-xs font-semibold mt-4 inline-block"
-        >
-          View on GitHub
-        </a>
-      </div>
-    </div>,
-     <div className="relative bg-gradient-to-b from-yellow-700 to-yellow-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
-     {/* Background X shape */}
-     <div className="absolute inset-0 bg-black bg-opacity-50 z-100" style={{
-       background: `linear-gradient(52deg, transparent 48%, black 48%, black 52%, transparent 52%), 
-                   linear-gradient(-52deg, transparent 48%, black 48%, black 52%, transparent 52%)`,
-       backgroundSize: '240px 310px', 
-       backgroundPosition: '0 0, 0 0',
-     }}></div>
-   
-     {/* Under development Text */}
-     <div className="absolute inset-0 flex items-center justify-center z-101">
-       <span className="text-2xl font-bold text-white bg-gradient-to-b from-yellow-600 to-yellow-950 bg-opacity-70 px-2 py-2 rounded-md">
-         Under development
- 
-       </span>
-       
-     </div>
-   
-     {/* Card Content */}
-     <h2 className="text-lg font-semibold mb-4 text-gray-200 z-10 relative">
-       iOS/Android App
-     </h2>
-     <p className="text-lg text-gray-300 mb-6 z-10 relative">
-       Currently working on a mobile app for iOS and Android using React Native.
-     </p>
-     <div className="mt-4 z-10 relative">
-       <h3 className="font-semibold text-gray-200 mb-2">Technologies Used:</h3>
-       <ul className="text-gray-300">
-         <li>React Native</li>
-         <li>TailwindCSS</li>
-       </ul>
-     </div>
-   </div>,
-     // Modern component for displaying data and filter
-     <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-sm text-center mb-6">
-     <h2 className="text-md font-semibold mb-4 text-blue-500">
-     Modern component for displaying data and filter data
-     </h2>
-     <p className="text-xs">
-      
-        A modern component for displaying data and filtering it using React. The component is designed to be reusable and customizable, allowing developers to easily integrate it into their projects.
-     </p>
-     <div className="mt-4">
-       <h3 className="font-semibold text-sm">Technologies used:</h3>
-       <ul className="text-xs">
-         <li>React, Vite, TailwindCSS</li>
-       </ul>
-     </div>
-   </div>,
-   
+    return !url.includes("github.com");
+  };
 
+  const isWebsiteProject = (project) => project.projectType === "website";
+  const canShowPreview =
+    (project) => isWebsiteProject(project) && project.allowPreview !== false;
 
+  const getStatusBadgeClass = (status) => {
+    if (status === "Student Project") {
+      return "bg-indigo-950/70 border-indigo-400/60 text-indigo-100";
+    }
 
+    if (status === "Open Source") {
+      return "bg-emerald-950/70 border-emerald-500/60 text-emerald-100";
+    }
 
-  ];
+    if (status === "In Progress") {
+      return "bg-amber-950/70 border-amber-500/60 text-amber-100";
+    }
 
+    return "bg-blue-950 border-blue-700 text-blue-100";
+  };
+
+  const visibleProjects = useMemo(() => {
+    if (!demoMode) {
+      return projects;
+    }
+
+    return projects.filter(
+      (project) =>
+        isWebsiteProject(project) &&
+        (Boolean(project.liveDemoUrl) || Boolean(project.previewImageUrl))
+    );
+  }, [demoMode]);
 
   return (
     <section
       id="projects"
-      className="relative py-20 min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-white flex justify-center items-center overflow-hidden"
+      className="relative py-20 min-h-screen bg-gradient-to-b from-slate-950/100 via-blue-950/95 to-slate-950 text-white overflow-hidden"
     >
-      {/* Iceberg */}
-      <div className="absolute left-1/2 lg:left-1/5 transform -translate-x-1/3 mb-610 z-0">
-        <Iceberg />
+      <div className="absolute left-1/2 lg:left-1/5 -translate-x-1/3 pointer-events-none opacity-45">
       </div>
 
-      {/* Projects Content */}
-      <div className="container  flex justify-center items-center flex-col z-10 relative mt-28">
-        <h1 className="text-6xl text-center my-12 text-gray-200 rounded-lg ">
-          Projects
-        </h1>
-          {/* Toggle Button */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center mb-10 mt-14">
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-gray-100">
+            Projects Showcase
+          </h1>
+          <p className="mt-4 text-sm md:text-base text-gray-300 max-w-2xl mx-auto">
+            Turn on demo mode when presenting. It will show only website
+            projects with a live link or screenshot preview.
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between gap-4 bg-blue-950/45 border border-blue-800/60 rounded-xl p-4 mb-8 backdrop-blur-sm">
+          <div>
+            <p className="text-sm text-cyan-100 font-medium">Demo Mode</p>
+            <p className="text-xs text-blue-200/70">
+              {demoMode
+                ? `Showing ${visibleProjects.length} demo-ready projects`
+                : `Showing all ${projects.length} projects`}
+            </p>
+          </div>
           <button
-          onClick={() => setShowCarousel(!showCarousel)}
-          className="mb-6 px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-lg"
-        >
-          {showCarousel ? "Hide Carousel" : "Show Carousel"}
-        </button>
-        {/* Carousel */}
-        {showCarousel && <Carousel items={items} />}
-        
-      
-      
+            type="button"
+            onClick={() => setDemoMode((prev) => !prev)}
+            className="px-4 py-2 rounded-lg text-sm font-semibold bg-gradient-to-b from-blue-700 to-blue-900 text-blue-50 hover:from-blue-600 hover:to-blue-800 ring-1 ring-blue-500/40 shadow-[inset_0_1px_0_rgba(191,219,254,0.2)] transition"
+          >
+            {demoMode ? "Disable Demo Mode" : "Enable Demo Mode"}
+          </button>
+        </div>
 
-       
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+          {visibleProjects.map((project) => (
+            <article
+              key={project.title}
+              className="group p-5 rounded-2xl border border-blue-800/60 bg-blue-950/40 hover:border-cyan-300/80 hover:-translate-y-1 transition"
+            >
+              {canShowPreview(project) ? (
+                <button
+                  type="button"
+                  onClick={() => setActivePreview(project)}
+                  className="w-full h-36 rounded-xl border border-blue-800/60 bg-gradient-to-br from-blue-950 to-slate-900 overflow-hidden mb-4 text-left hover:border-cyan-300/70 transition"
+                >
+                  {hasEmbeddableDemo(project.liveDemoUrl) ? (
+                    <iframe
+                      title={`${project.title} preview`}
+                      src={project.liveDemoUrl}
+                      className="w-full h-full border-none pointer-events-none"
+                      style={{ zoom: '0.4' }}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-end justify-between p-3">
+                      <div>
+                        <p className="text-[11px] uppercase tracking-wide text-cyan-300">
+                          Website Preview
+                        </p>
+                        <p className="text-sm font-semibold text-slate-100">
+                          Click to view
+                        </p>
+                      </div>
+                      <span className="text-[11px] px-2 py-1 rounded-md border border-blue-500/70 text-blue-200">
+                        Mini Window
+                      </span>
+                    </div>
+                  )}
+                </button>
+              ) : (
+                <div className="w-full h-16 rounded-xl border border-blue-800/60 bg-slate-900/60 mb-4 flex items-center px-3">
+                  <span className="text-[11px] uppercase tracking-wide text-blue-200/80">
+                    {isWebsiteProject(project)
+                      ? "Preview disabled for this project"
+                      : "Preview available only for website projects"}
+                  </span>
+                </div>
+              )}
 
-    
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <h2 className="text-lg font-semibold text-slate-100">
+                  {project.title}
+                </h2>
+                <span
+                  className={`text-[10px] uppercase tracking-wider text-center px-2 py-1 rounded-full border ${getStatusBadgeClass(
+                    project.status
+                  )}`}
+                >
+                  {project.status}
+                </span>
+              </div>
+
+              <p className="text-sm text-slate-300 mb-5 min-h-20">
+                {project.summary}
+              </p>
+
+              <ul className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((tag) => (
+                  <li
+                    key={tag}
+                    className="text-[11px] px-2 py-1 rounded-md bg-blue-950 text-cyan-200 border border-blue-800/70"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex items-center gap-3">
+                {project.liveDemoUrl ? (
+                  <a
+                    href={project.liveDemoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-center px-3 py-2 rounded-lg text-sm font-semibold bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition"
+                  >
+                    Live Demo
+                  </a>
+                ) : (
+                  <span className="flex-1 text-center px-3 py-2 rounded-lg text-sm font-semibold bg-blue-950/70 text-blue-200 border border-blue-700">
+                    Demo On Request
+                  </span>
+                )}
+
+                {project.githubUrl ? (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-center px-3 py-2 rounded-lg text-sm font-semibold bg-gradient-to-b from-blue-700 to-blue-900 text-blue-50 hover:from-blue-600 hover:to-blue-800 ring-1 ring-blue-500/35 shadow-[inset_0_1px_0_rgba(191,219,254,0.2)] transition"
+                  >
+                    GitHub
+                  </a>
+                ) : (
+                  <span className="flex-1 text-center px-3 py-2 rounded-lg text-sm font-semibold border border-slate-700 text-slate-500">
+                    Private Work
+                  </span>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {activePreview && (
+          <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm p-3 md:p-8 flex items-center justify-center">
+            <div className="w-full max-w-5xl rounded-2xl border border-blue-700 bg-slate-950 shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between p-4 border-b border-blue-800">
+                <div>
+                  <p className="text-sm font-semibold text-slate-100">
+                    {activePreview.title}
+                  </p>
+                  <p className="text-xs text-slate-400">Mini Preview Window</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActivePreview(null)}
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-500 text-slate-200 hover:border-cyan-300 hover:text-cyan-200 transition"
+                >
+                  Close
+                </button>
+              </div>
+
+              <div className="h-[60vh] bg-slate-900">
+                {hasEmbeddableDemo(activePreview.liveDemoUrl) ? (
+                  <iframe
+                    title={`${activePreview.title} live preview`}
+                    src={activePreview.liveDemoUrl}
+                    className="w-full h-full"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center p-6 text-center">
+                    <div>
+                      <p className="text-lg font-semibold text-slate-100 mb-2">
+                        No embeddable preview available
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
