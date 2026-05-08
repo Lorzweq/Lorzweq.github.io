@@ -1,0 +1,18 @@
+/*
+  # Content Security Policy - Prevent XSS and injection attacks
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  
+  # Clickjacking protection
+  X-Frame-Options: DENY
+  
+  # MIME type sniffing protection
+  X-Content-Type-Options: nosniff
+  
+  # XSS Protection (legacy, for older browsers)
+  X-XSS-Protection: 1; mode=block
+  
+  # Referrer Policy - Control what referrer info is sent
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Feature Policy / Permissions Policy - Restrict browser features
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
