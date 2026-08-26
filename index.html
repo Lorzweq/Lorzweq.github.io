@@ -1,11 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.png" />
+    <meta charset="UTF-8">
+    <!-- GitHub Pages ei tue HTTP-otsakkeita, joten CSP annetaan meta-tagina.
+         Huom: frame-ancestors ja X-Frame-Options eivät toimi meta-tagissa. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.emailjs.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <title>Leevi Hänninen</title>
-    <script type="module" crossorigin src="/assets/index-C1wxp9dq.js"></script>
+    <meta name="description" content="Leevi Hänninen – software developer. Web, IoT and game development.">
+    <link rel="canonical" href="https://lorzweq.dev/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Leevi Hänninen">
+    <meta property="og:description" content="Software developer. Web, IoT and game development.">
+    <meta property="og:url" content="https://lorzweq.dev/">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Lisää 1200x630 px kuva public/-kansioon ja poista nämä kommenttimerkit:
+    <meta property="og:image" content="https://lorzweq.dev/og-image.png">
+    <meta name="twitter:image" content="https://lorzweq.dev/og-image.png">
+    -->
+    <script type="module" crossorigin src="/assets/index-Dl-psAtS.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DWqHGNbc.css">
   </head>
   <body>
