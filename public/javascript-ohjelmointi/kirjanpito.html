@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript-ohjelmointi - Harjoitustehtäväkirjanpito</title>
+<style>
+    :root {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --border: #334155;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --ok: #86efac;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding: 2rem;
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    }
+    nav.topnav {
+        max-width: 900px;
+        margin: 0 auto 2rem auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+    nav.topnav a {
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    nav.topnav a:hover {
+        color: var(--accent);
+        background: var(--card-bg);
+    }
+    nav.topnav a.active {
+        color: var(--text);
+        background: var(--card-bg);
+    }
+    nav.topnav a.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+    main {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    h1 {
+        margin: 0 0 0.25rem 0;
+        font-size: 1.6rem;
+    }
+    .lead {
+        margin: 0 0 1.5rem 0;
+        color: var(--muted);
+    }
+    .summary {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 2rem;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.4rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    .summary dt {
+        color: var(--muted);
+    }
+    .summary dd {
+        margin: 0;
+    }
+    .summary a {
+        color: var(--accent);
+    }
+    .summary .total {
+        color: var(--ok);
+        font-weight: 600;
+    }
+    h2 {
+        font-size: 1.15rem;
+        color: var(--accent);
+        margin: 2rem 0 0.25rem 0;
+    }
+    h2 + p {
+        margin: 0 0 0.75rem 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+    h2 + p a {
+        color: var(--accent);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+    th, td {
+        text-align: left;
+        padding: 0.55rem 0.6rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+    }
+    th {
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+    td.id {
+        white-space: nowrap;
+        font-family: Consolas, monospace;
+    }
+    td.id a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+    td.id a:hover {
+        text-decoration: underline;
+    }
+    td.pts {
+        white-space: nowrap;
+        color: var(--ok);
+        font-family: Consolas, monospace;
+    }
+    td.note {
+        color: var(--text);
+    }
+    .upcoming {
+        color: var(--muted);
+        font-style: italic;
+    }
+    .table-wrap {
+        overflow-x: auto;
+    }
+    footer {
+        margin-top: 2.5rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+    }
+</style>
+</head>
+<body>
+<nav class="topnav">
+    <a href="./">Etusivu</a>
+    <a href="Harjoitukset_1/">Harjoitukset 1</a>
+    <a class="disabled" href="Harjoitukset_2/">Harjoitukset 2</a>
+    <a class="disabled" href="Harjoitukset_3/">Harjoitukset 3</a>
+    <a class="disabled" href="Harjoitukset_4/">Harjoitukset 4</a>
+    <a class="disabled" href="Harjoitukset_5/">Harjoitukset 5</a>
+    <a class="disabled" href="Harjoitukset_6/">Harjoitukset 6</a>
+    <a class="active" href="kirjanpito.html">Kirjanpito</a>
+</nav>
+<main>
+    <h1>Harjoitustehtäväkirjanpito</h1>
+    <p class="lead">JavaScript-ohjelmointi TT00CD80-3014, JAMK, syksy 2026. Itsearvioidut pisteet tehtävittäin ja linkit toimiviin ratkaisuihin.</p>
+
+    <dl class="summary">
+        <dt>Opiskelija</dt><dd>Leevi Hänninen [ai4010]</dd>
+        <dt>Päivitetty</dt><dd>07.09.2026</dd>
+        <dt>Ratkaisut</dt><dd><a href="https://lorzweq.dev/javascript-ohjelmointi/">https://lorzweq.dev/javascript-ohjelmointi/</a></dd>
+        <dt>Harjoitustehtäväpisteet</dt><dd class="total">24</dd>
+        <dt>Tarjolla olleet pisteet</dt><dd>24 (vain Harjoitukset 1 julkaistu tähän mennessä)</dd>
+        <dt>Osuus</dt><dd class="total">24/24 = 100,0 %</dd>
+    </dl>
+
+    <p class="lead">Kaikki ratkaisut ovat selaimessa ajettavia HTML-tiedostoja. Jokaisen harjoitussarjan tehtävät on koottu yhdelle sivulle, jossa lähdekoodi näkyy kortissa ja tehtävän voi suorittaa napista. Lisäksi jokainen tehtävä on omana tiedostonaan, jonka lähdekoodin näkee selaimella (Ctrl+U).</p>
+
+    <h2>Harjoitukset 1: JavaScript-perusteet (24 p)</h2>
+    <p>Koontisivu: <a href="Harjoitukset_1/">lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/</a></p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Tehtävä</th><th>Pisteet</th><th>Kommentti</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava1.html">H1T1</a></td><td class="pts">2/2</td><td class="note">name-, age- ja place-muuttujat, line-muuttuja koostettu niistä, tuloste konsoliin annetussa muodossa. Testattu myös jsbin.comissa.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava2.html">H1T2</a></td><td class="pts">2/2</td><td class="note">Ikäero lasketaan if / else if / else -rakenteella; toimii kummin päin tahansa ja samanikäisillä.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava3.html">H1T3</a></td><td class="pts">2/2</td><td class="note">Lause muodostetaan taulukosta for-silmukalla, välilyönti vain sanojen väliin.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava4.html">H1T4</a></td><td class="pts">2/2</td><td class="note">Funktio kolmeLukua(a, b, c) tulostaa luvut ja suurimman; kutsutaan kolmella muuttujalla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava5.html">H1T5</a></td><td class="pts">2/2</td><td class="note">Funktio jakaa taulukon parillisiin ja parittomiin (% 2) ja tulostaa kaikki kolme taulukkoa.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava6.html">H1T6</a></td><td class="pts">2/2</td><td class="note">Funktio etsii pienimmän ja suurimman sekä laskee summan ja keskiarvon yhdellä silmukalla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava7.html">H1T7</a></td><td class="pts">3/3</td><td class="note">onkoKarkausvuosi(vuosi) palauttaa true/false annetulla algoritmilla, pääohjelma tulostaa tuloksen. Testattu 1991, 1992, 1900, 2000.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava8.html">H1T8</a></td><td class="pts">3/3</td><td class="note">onkoPalindromi(teksti) palauttaa true/false; välilyönnit poistetaan ja kirjainkoko yhtenäistetään ennen vertailua.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava9.html">H1T9</a></td><td class="pts">3/3</td><td class="note">Nimiä kysytään prompt()-funktiolla kunnes tyhjä syöte; tulostaa nimet annetussa ja aakkosjärjestyksessä.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_1/tehtava10.html">H1T10</a></td><td class="pts">3/3</td><td class="note">Viisi tyylipistettä prompt()-funktiolla; summasta vähennetään suurin ja pienin.</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2>Harjoitukset 2: JavaScript-perusteet 2</h2>
+    <p class="upcoming">Ei vielä aloitettu.</p>
+
+    <h2>Harjoitukset 3: JavaScript-perusteet 3</h2>
+    <p class="upcoming">Ei vielä aloitettu.</p>
+
+    <h2>Harjoitukset 4: DOM</h2>
+    <p class="upcoming">Ei vielä aloitettu.</p>
+
+    <h2>Harjoitukset 5: JSON, Promise ja Fetch API</h2>
+    <p class="upcoming">Ei vielä aloitettu.</p>
+
+    <h2>Harjoitukset 6: Kartat web-ohjelmoinnissa</h2>
+    <p class="upcoming">Ei vielä aloitettu.</p>
+
+    <footer>Tekstimuotoinen versio Moodle-palautusta varten: <a href="kirjanpito.txt" style="color: var(--accent);">kirjanpito.txt</a></footer>
+</main>
+</body>
+</html>
