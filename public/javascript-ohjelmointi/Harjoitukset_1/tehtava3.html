@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 3</title>
+</head>
+<body>
+    <h1>Tehtävä 3</h1>
+    <script>
+        list = ["JavaScriptin", "opiskelu", "on", "ihanaa!"]
+        var sentence = "";
+        // console.log(list.join(" "));
+        for (var i = 0; i < list.length; i++) {
+            sentence += list[i];
+            if (i < list.length - 1) {
+                sentence += " ";
+            }
+        }
+        console.log(sentence);
+    </script>
+</body>
+</html>
