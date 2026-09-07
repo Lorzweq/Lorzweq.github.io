@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 4</title>
+</head>
+<body>
+    <h1>Tehtävä 4</h1>
+    <script>
+        function kolmeLukua(luku1, luku2, luku3) {
+            var biggest = luku1
+            if (luku2 > biggest) {
+                biggest = luku2
+            }
+            if (luku3 > biggest) {
+                biggest = luku3
+            }
+            console.log("Luvut olivat: " + luku1 + ", " + luku2 + ", " + luku3)
+            console.log("Suurin luku oli: " + biggest)
+        }
+        var eka = 5
+        var toka = 10
+        var kolmas = 3
+        kolmeLukua(eka, toka, kolmas)
+    </script>
+</body>
+</html>

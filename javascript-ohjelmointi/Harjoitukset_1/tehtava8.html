@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 8</title>
+</head>
+<body>
+    <h1>Tehtävä 8</h1>
+    <script>
+        function pääOhjelma(teksti) {
+            var tulos = onkoPalindromi(teksti);
+            if (tulos) {
+                console.log(teksti + " -> on palindromi");
+            } else {
+                console.log(teksti + " -> ei ole palindromi");
+            }
+        }
+        function onkoPalindromi(teksti) {
+            var siisti = teksti.toLowerCase().replace(/\s/g, '');
+            var reversedTeksti = siisti.split("").reverse().join("");
+            if (siisti === reversedTeksti) {
+                return true;
+            } else {
+                return false
+            }
+        }
+        pääOhjelma("race car");
+        pääOhjelma("hello");
+        pääOhjelma("level");
+        pääOhjelma("saippuakivikauppias");
+        pääOhjelma("Was it a car or a cat I saw");
+        pääOhjelma("How about this one");
+    </script>
+    
+</body>
+</html>
