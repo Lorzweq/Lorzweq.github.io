@@ -1,0 +1,52 @@
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+JavaScript-ohjelmointi (TT00CD80-3014): Harjoitustehtäväkirjanpito
+Päivitetty: 07.09.2026
+Hänninen Leevi [ai4010]
+Ratkaisut: https://lorzweq.dev/javascript-ohjelmointi/
+Harjoitustehtäväpisteet:   24
+Kaikki tarjolla olleet harjoitustehtäväpisteet:   24 (vain Harjoitukset 1 julkaistu tähän mennessä)
+24/24 => 100,0 %
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Kaikki ratkaisut ovat selaimessa ajettavia HTML-tiedostoja. Jokaisen harjoitussarjan
+tehtävät on koottu yhdelle sivulle, jossa lähdekoodi näkyy kortissa ja tehtävän voi
+suorittaa napista. Lisäksi jokainen tehtävä on omana tiedostonaan (lähdekoodi Ctrl+U).
+
+HARJOITUKSET 1: JavaScript-perusteet (24p)
+Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/
+
+H1T1: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava1.html
+       name-, age- ja place-muuttujat, line-muuttuja koostettu niistä, tuloste konsoliin annetussa muodossa. Testattu myös jsbin.comissa.
+H1T2: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava2.html
+       Ikäero lasketaan if/else if/else -rakenteella, toimii kummin päin tahansa ja samanikäisillä.
+H1T3: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava3.html
+       Lause muodostetaan taulukosta for-silmukalla, välilyönti vain sanojen väliin.
+H1T4: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava4.html
+       Funktio kolmeLukua(a, b, c) tulostaa luvut ja suurimman; kutsutaan kolmella muuttujalla.
+H1T5: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava5.html
+       Funktio jakaa taulukon parillisiin ja parittomiin (% 2) ja tulostaa kaikki kolme taulukkoa.
+H1T6: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava6.html
+       Funktio etsii pienimmän ja suurimman sekä laskee summan ja keskiarvon yhdellä silmukalla.
+H1T7: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava7.html
+       onkoKarkausvuosi(vuosi) palauttaa true/false annetulla algoritmilla, pääohjelma tulostaa tuloksen. Testattu 1991, 1992, 1900, 2000.
+H1T8: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava8.html
+       onkoPalindromi(teksti) palauttaa true/false; välilyönnit poistetaan ja kirjainkoko yhtenäistetään ennen vertailua.
+H1T9: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava9.html
+       Nimiä kysytään prompt()-funktiolla kunnes tyhjä syöte; tulostaa nimet annetussa ja aakkosjärjestyksessä.
+H1T10: 3/3p https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava10.html
+       Viisi tyylipistettä prompt()-funktiolla; summasta vähennetään suurin ja pienin.
+
+HARJOITUKSET 2: JavaScript-perusteet 2
+(ei vielä aloitettu)
+
+HARJOITUKSET 3: JavaScript-perusteet 3
+(ei vielä aloitettu)
+
+HARJOITUKSET 4: DOM
+(ei vielä aloitettu)
+
+HARJOITUKSET 5: JSON, Promise ja Fetch API
+(ei vielä aloitettu)
+
+HARJOITUKSET 6: Kartat web-ohjelmoinnissa
+(ei vielä aloitettu)
