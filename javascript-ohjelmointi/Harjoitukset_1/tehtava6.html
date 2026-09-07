@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 6</title>
+</head>
+<body>
+    <h1>Tehtävä 6</h1>
+    <script>
+        function laskeSuurin(luvut){
+            console.log("Luvut olivat: " + luvut);
+            var suurin = luvut[0];
+            var pienin = luvut[0];
+            var summa = 0;
+            for(var i in luvut){
+                if(luvut[i] > suurin){
+                    suurin = luvut[i];
+                }
+                if(luvut[i] < pienin){
+                    pienin = luvut[i];
+                }
+                summa += luvut[i];
+            }
+            var keskiarvo = summa / luvut.length;
+            console.log("Pienin luku: " + pienin);
+            console.log("Suurin luku: " + suurin);
+            console.log("Summa: " + summa);
+            console.log("Keskiarvo: " + keskiarvo);
+        }
+        var sample = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        laskeSuurin(sample);
+    </script>
+</body>
+</html>
