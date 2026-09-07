@@ -16,12 +16,13 @@ export function Contact() {
         import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then(
-        (result) => {
+        () => {
           e.target.reset();
           setSubmitStatus("success");
           setTimeout(() => setSubmitStatus(null), 5000);
         },
         (error) => {
+          console.error("EmailJS send failed:", error);
           setSubmitStatus("error");
         }
       );
@@ -152,7 +153,7 @@ export function Contact() {
 
             {submitStatus === "success" && (
               <div className="mt-4 p-3 rounded-lg bg-emerald-900/50 border border-emerald-600/50 text-emerald-100 text-sm">
-                Message sent successfully! I'll get back to you soon.
+                Message sent successfully! I&apos;ll get back to you soon.
               </div>
             )}
             {submitStatus === "error" && (
