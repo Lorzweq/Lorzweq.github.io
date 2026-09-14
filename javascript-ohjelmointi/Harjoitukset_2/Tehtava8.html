@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 8</title>
+    <style>
+    :root {
+        --felt-dark: #0a2a1f;
+        --felt: #0f3d2c;
+        --gold: #e8c352;
+        --gold-dim: #8a6f25;
+        --cabinet: #1a1410;
+        --text: #f5efe0;
+        --win: #4ade80;
+        --lose: #b0a894;
+    }
+ 
+    * { box-sizing: border-box; }
+ 
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        padding: 32px 16px;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        color: var(--text);
+        background:
+            radial-gradient(circle at 50% 0%, var(--felt) 0%, var(--felt-dark) 70%);
+    }
+ 
+    h1 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        text-shadow: 0 0 18px rgba(232, 195, 82, 0.45);
+    }
+ 
+ 
+    .cabinet {
+        background: linear-gradient(180deg, #241c16 0%, var(--cabinet) 100%);
+        border: 3px solid var(--gold-dim);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow:
+            0 0 0 6px rgba(0, 0, 0, 0.35),
+            0 24px 60px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+ 
+    .reels {
+        display: flex;
+        gap: 12px;
+        padding: 16px;
+        background: #0b0907;
+        border: 2px solid var(--gold-dim);
+        border-radius: 12px;
+        box-shadow: inset 0 6px 20px rgba(0, 0, 0, 0.8);
+    }
+ 
+    .reel {
+        width: 96px;
+        height: 96px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, #fdfaf2 0%, #e6dfd0 50%, #fdfaf2 100%);
+        border-radius: 8px;
+        box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.25);
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+ 
+    .reel svg { width: 68px; height: 68px; display: block; }
+ 
+    .reel.spinning svg { animation: blur 0.14s infinite alternate; }
+ 
+    @keyframes blur {
+        from { transform: translateY(-4px); opacity: 0.75; }
+        to   { transform: translateY(4px);  opacity: 1; }
+    }
+ 
+    .reel.win {
+        box-shadow: 0 0 0 3px var(--gold), 0 0 26px rgba(232, 195, 82, 0.9);
+        transform: translateY(-3px);
+    }
+ 
+ 
+    .panel {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 18px;
+    }
+ 
+    .meter {
+        flex: 1;
+        text-align: center;
+        padding: 10px 14px;
+        background: #0b0907;
+        border: 1px solid var(--gold-dim);
+        border-radius: 8px;
+    }
+ 
+    .meter .label {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--lose);
+    }
+ 
+    .meter .value {
+        font-family: "Courier New", monospace;
+        font-size: 26px;
+        font-weight: bold;
+        color: var(--gold);
+    }
+ 
+    #message {
+        min-height: 26px;
+        margin-top: 14px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+ 
+    #message.win  { color: var(--win); text-shadow: 0 0 14px rgba(74, 222, 128, 0.5); }
+    #message.lose { color: var(--lose); }
+ 
+ 
+    .buttons {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+    }
+ 
+    button {
+        flex: 1;
+        padding: 14px 22px;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #2a1c05;
+        background: linear-gradient(180deg, #f4d774 0%, var(--gold) 55%, #b8912f 100%);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 0 #7a601f, 0 8px 18px rgba(0, 0, 0, 0.45);
+        transition: transform 0.08s, box-shadow 0.08s;
+    }
+ 
+    button:active:not(:disabled) {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 #7a601f, 0 4px 10px rgba(0, 0, 0, 0.45);
+    }
+ 
+    button:disabled {
+        cursor: not-allowed;
+        filter: grayscale(0.7);
+        opacity: 0.55;
+    }
+ 
+    button.secondary {
+        flex: 0 0 auto;
+        color: var(--gold);
+        background: transparent;
+        border: 2px solid var(--gold-dim);
+        box-shadow: none;
+    }
+ 
+    .paytable {
+        font-size: 13px;
+        color: var(--lose);
+        text-align: center;
+        line-height: 1.8;
+    }
+ 
+    .paytable b { color: var(--gold); }
+</style>
+</head>
+<body>
+    <h1>Tehtävä 8</h1>
+    <svg style="display: none;">
+        <symbol id="banana" viewBox="0 0 256 256">
+            <g fill="none" stroke="#EBAF1E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M54 80 C 48 166, 106 214, 180 210 C 200 209, 214 200, 214 190 C 214 181, 205 178, 196 182 C 186 187, 176 189, 164 189 C 112 189, 78 148, 78 86 C 78 76, 72 70, 65 70 C 58 70, 55 74, 54 80 Z"/>
+                <path d="M66 70 C 66 60, 64 52, 59 46"/>
+            </g>
+        </symbol>
+        <symbol id="cherry" viewBox="0 0 256 256">
+            <g fill="none" stroke="#D62246" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="94" cy="188" r="34"/>
+                <circle cx="172" cy="196" r="30"/>
+                <path d="M94 154 C 98 112, 118 76, 150 58"/>
+                <path d="M170 166 C 174 122, 164 84, 150 58"/>
+                <path d="M150 58 C 168 40, 196 44, 200 58 C 194 76, 166 78, 150 58 Z"/>
+            </g>
+        </symbol>
+        <symbol id="apple" viewBox="0 0 256 256">
+            <g fill="none" stroke="#E14444" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M128 78 C 104 52, 58 62, 54 110 C 50 154, 80 210, 108 210 C 118 210, 122 204, 128 204 C 134 204, 138 210, 148 210 C 176 210, 206 154, 202 110 C 198 62, 152 52, 128 78 Z"/>
+                <path d="M128 78 C 128 60, 130 48, 140 40"/>
+                <path d="M139 47 C 158 30, 186 34, 190 47 C 185 65, 157 67, 139 47 Z"/>
+            </g>
+        </symbol>
+        <symbol id="grape" viewBox="0 0 256 256">
+            <g fill="none" stroke="#7C4DBE" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="76" cy="110" r="26"/>
+                <circle cx="128" cy="110" r="26"/>
+                <circle cx="180" cy="110" r="26"/>
+                <circle cx="102" cy="156" r="26"/>
+                <circle cx="154" cy="156" r="26"/>
+                <circle cx="128" cy="202" r="26"/>
+                <path d="M128 84 C 128 62, 132 52, 142 44"/>
+                <path d="M142 50 C 160 30, 190 34, 194 48 C 188 66, 160 70, 142 50 Z"/>
+            </g>
+        </symbol>
+        <symbol id="lemon" viewBox="0 0 256 256">
+            <g fill="none" stroke="#DCA800" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M26 128 C 46 88, 84 60, 128 60 C 172 60, 210 88, 230 128 C 210 168, 172 196, 128 196 C 84 196, 46 168, 26 128 Z"/>
+                <path d="M64 112 C 80 90, 104 78, 128 76"/>
+            </g>
+        </symbol>
+        <symbol id="watermelon" viewBox="0 0 256 256">
+            <g fill="none" stroke="#E24B5F" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M36 88 L 220 88 A 92 92 0 0 1 36 88 Z"/>
+                <path d="M60 100 L 196 100 A 68 68 0 0 1 60 100"/>
+                <path d="M100 120 L 106 132"/>
+                <path d="M156 120 L 150 132"/>
+                <path d="M128 152 L 128 164"/>
+            </g>
+        </symbol>
+    </svg>
+    <h2>Fruit game</h2>
+    <div class="cabinet">
+        <div class="reels" id="reels">
+            <div class="reel"><svg><use href="#apple"/></svg></div>
+            <div class="reel"><svg><use href="#banana"/></svg></div>
+            <div class="reel"><svg><use href="#cherry"/></svg></div>
+        </div>
+    
+        <div class="panel">
+            <div class="meter">
+                <div class="label">Euros left</div>
+                <div class="value" id="balance">100 €</div>
+            </div>
+            <div class="meter">
+                <div class="label">Bet</div>
+                <div class="value">1 €</div>
+            </div>
+            <div class="meter">
+                <div class="label">Win</div>
+                <div class="value" id="lastWin">0 €</div>
+            </div>
+        </div>
+    
+        <div id="message"></div>
+    
+        <div class="buttons">
+            <button id="rollButton">Spin</button>
+        </div>
+    </div>
+    
+        <div class="paytable">
+            One spin <b>1 €</b> &nbsp;·&nbsp; Two of a kind <b>2 €</b> &nbsp;·&nbsp; Three of a kind <b>10 €</b>
+        </div>
+    <script>
+        const FRUITS = ["apple", "banana", "cherry", "lemon", "watermelon", "grape"];
+        const reelElements   = document.querySelectorAll("#reels .reel");
+        const useElements    = document.querySelectorAll("#reels .reel use");
+        const balanceElement = document.getElementById("balance");
+        const lastWinElement = document.getElementById("lastWin");
+        const messageElement = document.getElementById("message");
+        const rollButton     = document.getElementById("rollButton");
+
+        const SPIN_COST  = 1;
+        const PAIR_WIN   = 2;
+        const TRIPLE_WIN = 10;
+
+        let balance = 100;
+        let spinning = false;
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function randomFruit() {
+            return FRUITS[getRandomInt(0, FRUITS.length - 1)];
+        }
+        function setFruit(useElement, name) {
+            useElement.setAttribute("href", "#" + name);
+        }
+
+        // Piirtää saldon ja lukitsee napin jos rahat eivät riitä. Ei muuta saldoa.
+        function updateBalance() {
+            balanceElement.textContent = `${balance} €`;
+            rollButton.disabled = spinning || balance < SPIN_COST;
+        }
+
+        function calculateWin(names) {
+            const counts = {};
+
+            names.forEach((name) => {
+                counts[name] = (counts[name] || 0) + 1;
+            });
+
+            const highest = Math.max(...Object.values(counts));
+
+            if (highest === 3) return TRIPLE_WIN;
+            if (highest === 2) return PAIR_WIN;
+            return 0;
+        }
+        function highlightWinners(names) {
+            const counts = {};
+            names.forEach((name) => {
+                counts[name] = (counts[name] || 0) + 1;
+            });
+    
+            names.forEach((name, i) => {
+                if (counts[name] >= 2) {
+                    reelElements[i].classList.add("win");
+                }
+            });
+        }
+ 
+        function clearHighlights() {
+            reelElements.forEach((reel) => reel.classList.remove("win"));
+        }
+
+        function finish(result) {
+            const win = calculateWin(result);
+    
+            balance += win;
+            spinning = false;
+            updateBalance();
+    
+            lastWinElement.textContent = win + " €";
+    
+            if (win === TRIPLE_WIN) {
+                messageElement.textContent = "WOHOO - You won " + win + " euros!";
+                messageElement.className = "win";
+                highlightWinners(result);
+            } else if (win === PAIR_WIN) {
+                messageElement.textContent = "WOHOO - You won " + win + " euros!";
+                messageElement.className = "win";
+                highlightWinners(result);
+            } else if (balance < SPIN_COST) {
+                messageElement.textContent = "Sorry - No win! Sorry you don't have any euros left!";
+                messageElement.className = "lose";
+            } else {
+                messageElement.textContent = "Sorry - No win!";
+                messageElement.className = "lose";
+            }
+        }
+
+        function roll() {
+            if (spinning) return;
+    
+            if (balance < SPIN_COST) {
+                messageElement.textContent = "Sorry you don't have any euros left!";
+                messageElement.className = "lose";
+                return;
+            }
+    
+            // 1. Veloita panos heti
+            balance -= SPIN_COST;
+            spinning = true;
+            updateBalance();
+    
+            clearHighlights();
+            messageElement.textContent = "";
+            messageElement.className = "";
+            lastWinElement.textContent = "0 €";
+    
+            // 2. Arvo lopputulos jo nyt, animaatio on pelkkää silmänruokaa
+            const result = [];
+            useElements.forEach(() => result.push(randomFruit()));
+    
+            // 3. Pyöritä jokaista rullaa nopeasti
+            const tickers = [];
+    
+            useElements.forEach((useElement, i) => {
+                reelElements[i].classList.add("spinning");
+                tickers[i] = setInterval(() => {
+                    setFruit(useElement, randomFruit());
+                }, 80);
+            });
+    
+            // 4. Pysäytä rullat yksi kerrallaan vasemmalta oikealle
+            useElements.forEach((useElement, i) => {
+                setTimeout(() => {
+                    clearInterval(tickers[i]);
+                    reelElements[i].classList.remove("spinning");
+                    setFruit(useElement, result[i]);
+    
+                    // viimeinen rulla pysähtyi, ratkaistaan kierros
+                    if (i === useElements.length - 1) {
+                        finish(result);
+                    }
+                }, 700 + i * 450);
+            });
+        }
+
+        rollButton.addEventListener("click", roll);
+
+        updateBalance();   
+    </script>
+</body>
+</html>

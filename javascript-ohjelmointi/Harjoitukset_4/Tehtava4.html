@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 4</title>
+    <style>
+        .container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 4</h1>
+    <p>Valitse juhlaväri</p>
+    <select id="juhlavari">
+        <option value="#e53935">Punainen</option>
+        <option value="#43a047">Vihreä</option>
+        <option value="#1e88e5">Sininen</option>
+        <option value="#fdd835">Keltainen</option>
+        <option value="#8e24aa">Violetti</option>
+    </select>
+    <p>Mikä juhla?</p>
+    <input type="text" id="juhlaInput" placeholder="Kirjoita juhla">
+
+    <button id="vaihdaButton">Vaihda valittu taustaväri</button>
+
+    <div class="container" id="tulosalue">
+        <p ><strong>Tulosalue</strong></p>
+        <div id="varikoodi" style="min-height: 50px;"></div>
+        <div id="juhlaTeksti"></div>
+    </div>
+    <script>
+       const juhlavariSelect = document.getElementById("juhlavari");
+       const juhlaInput = document.getElementById("juhlaInput");
+       const vaihdaButton = document.getElementById("vaihdaButton");
+       const tulosalue = document.getElementById("tulosalue");
+       const varikoodi = document.getElementById("varikoodi");
+       const juhlaTeksti = document.getElementById("juhlaTeksti");
+
+       function naytaVarikoodi() {
+            varikoodi.textContent = "Valittu juhlaväri: " + juhlavariSelect.value;
+       }
+
+       function paivitaJuhla()  {
+            juhlaInput.value = juhlaInput.value.replace(/[0-9]/g, "");
+            juhlaTeksti.textContent = juhlaInput.value;
+       }
+
+       function estaNumerot(event) {
+            if (event.key >= "0" && event.key <= "9") {
+                event.preventDefault();
+            }
+        }
+
+        function vaihdaTaustavari() {
+            tulosalue.style.backgroundColor = juhlavariSelect.value;
+        }
+
+        // Tapahtumakuuntelijat
+        juhlavariSelect.addEventListener("change", naytaVarikoodi);
+        juhlaInput.addEventListener("keydown", estaNumerot);
+        juhlaInput.addEventListener("input", paivitaJuhla);
+        vaihdaButton.addEventListener("click", vaihdaTaustavari);
+
+        // Näytetään alkuvalinnan värikoodi heti sivun latautuessa
+        naytaVarikoodi();
+    </script>
+</body>
+</html>

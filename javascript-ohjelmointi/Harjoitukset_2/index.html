@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript-ohjelmointi - Harjoitukset 2</title>
+<style>
+    :root {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --border: #334155;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --accent-dark: #0284c7;
+        --output-bg: #020617;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding: 2rem;
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    }
+    header {
+        max-width: 1100px;
+        margin: 0 auto 2rem auto;
+    }
+    header h1 {
+        margin: 0 0 0.25rem 0;
+        font-size: 1.6rem;
+    }
+    header p {
+        margin: 0;
+        color: var(--muted);
+    }
+    nav.topnav {
+        max-width: 1100px;
+        margin: 0 auto 2rem auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+    nav.topnav a {
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    nav.topnav a:hover {
+        color: var(--accent);
+        background: var(--card-bg);
+    }
+    nav.topnav a.active {
+        color: var(--text);
+        background: var(--card-bg);
+    }
+    nav.topnav a.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+    .grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 1.25rem;
+    }
+    .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1rem 1rem 1.25rem 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .card h2 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+    .card h2 .pts {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.1rem 0.55rem;
+    }
+    .card p.desc {
+        margin: 0 0 0.9rem 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        flex-grow: 1;
+    }
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.6rem;
+    }
+    .actions button {
+        padding: 0.45rem 1rem;
+        border: none;
+        border-radius: 6px;
+        background: var(--accent-dark);
+        color: white;
+        font-size: 0.85rem;
+        cursor: pointer;
+    }
+    .actions button:hover {
+        background: var(--accent);
+    }
+    .actions button.ghost {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--muted);
+    }
+    .actions button.ghost:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+    }
+    .actions a.open {
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-decoration: none;
+    }
+    .actions a.open:hover {
+        color: var(--accent);
+        text-decoration: underline;
+    }
+    .panel {
+        margin-top: 0.9rem;
+    }
+    .panel iframe {
+        width: 100%;
+        height: 340px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: white;
+    }
+    .panel pre {
+        margin: 0;
+        padding: 0.75rem;
+        max-height: 340px;
+        overflow: auto;
+        border-radius: 6px;
+        background: var(--output-bg);
+        color: #a5b4fc;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        font-family: "Cascadia Code", Consolas, monospace;
+        white-space: pre;
+    }
+    .panel .hint {
+        margin: 0;
+        padding: 0.75rem;
+        border-radius: 6px;
+        background: var(--output-bg);
+        color: var(--muted);
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+    footer {
+        max-width: 1100px;
+        margin: 2rem auto 0 auto;
+        color: var(--muted);
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+    footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+    <a href="../">Etusivu</a>
+    <a href="../Harjoitukset_1/">Harjoitukset 1</a>
+    <a class="active" href="../Harjoitukset_2/">Harjoitukset 2</a>
+    <a href="../Harjoitukset_3/">Harjoitukset 3</a>
+    <a href="../Harjoitukset_4/">Harjoitukset 4</a>
+    <a href="../Harjoitukset_5/">Harjoitukset 5</a>
+    <a href="../Harjoitukset_6/">Harjoitukset 6</a>
+    <a href="../kirjanpito.html">Kirjanpito</a>
+</nav>
+
+<header>
+    <h1>JavaScript-ohjelmointi (TT00CD80-3014) - Harjoitukset 2</h1>
+    <p>Kahdeksan tehtävää, yhteensä 32 pistettä. Jokainen tehtävä on oma HTML-sivunsa: avaa se omaan välilehteen tai katso esikatselu ja lähdekoodi suoraan kortista.</p>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+    Tehtävät käyttävät DOMia, lomakkeita ja ajastimia, joten ne suoritetaan omassa dokumentissaan
+    esikatselukehyksessä. Lähdekoodin saa näkyviin kortin painikkeesta tai selaimen
+    &quot;Näytä sivun lähdekoodi&quot; -toiminnolla (Ctrl+U).
+</footer>
+
+<script>
+
+    // Tehtävien kuvaukset, pisteet ja tiedostonimet
+    var TASKS = [
+        {
+            n: 1,
+            pts: 3,
+            file: "Tehtava1.html",
+            desc: "Käyttäjä antaa nimen ja syntymävuoden. Show-painike laskee iän Date-luokan getFullYear()-funktiolla ja tulostaa tervehdystekstin."
+        },
+        {
+            n: 2,
+            pts: 3,
+            file: "Tehtava2.html",
+            desc: "Kahden luvun yhteenlaskin. tulostaSumma(a, b) ottaa lomakkeen merkkijonot ja tulostaa tuloksen div-elementtiin; summan laskee laskeSumma(a, b), joka palauttaa kokonaisluvun."
+        },
+        {
+            n: 3,
+            pts: 4,
+            file: "Tehtava3.html",
+            desc: "Arvonlisäveron laskuri kolmella verokannalla. Kaikki laskenta tehdään yhdessä laskeALV(hinta, kanta)-funktiossa, jossa yleinen 25,5 % on oletusparametrina."
+        },
+        {
+            n: 4,
+            pts: 4,
+            file: "Tehtava4.html",
+            desc: "Arvaa mikä luku -peli. Ohjelma arpoo luvun 1-100 Math.random()-funktiolla, antaa vihjeet suuremmasta ja pienemmästä ja laskee arvauskerrat."
+        },
+        {
+            n: 5,
+            pts: 3,
+            file: "Tehtava5.html",
+            desc: "Latausprosessin simulointi 0-100 %. setInterval kutsuu omaa funktiota kerran sekunnissa ja päivittää div-elementin sisällön, lopuksi Loading finished!."
+        },
+        {
+            n: 6,
+            pts: 4,
+            file: "Tehtava6.html",
+            desc: "Päivämäärä ja kellonaika, joka päivittyy sekunnin välein. Aika luetaan Date-objektilta ja kirjoitetaan div-elementtiin innerHTML-ominaisuudella."
+        },
+        {
+            n: 7,
+            pts: 5,
+            file: "Tehtava7.html",
+            desc: "Lady Gagan konsertti. Ensimmäinen teksti näkyy heti latauksessa, ilotulitusrivit lisätään viiden sekunnin välein edellisten alle ja lopuksi tulee päätösteksti."
+        },
+        {
+            n: 8,
+            pts: 6,
+            file: "Tehtava8.html",
+            desc: "Hedelmäpeli. Spin arpoo kolme hedelmää, saldo alkaa 100 eurosta, kierros maksaa 1 euron, kaksi samaa tuottaa 2 ja kolme samaa 10 euroa. Peli pysähtyy kun eurot loppuvat."
+        }
+    ];
+
+    var grid = document.getElementById("grid");
+
+    TASKS.forEach(function (task) {
+        var card = document.createElement("div");
+        card.className = "card";
+
+        var title = document.createElement("h2");
+        title.textContent = "Tehtävä " + task.n;
+
+        var badge = document.createElement("span");
+        badge.className = "pts";
+        badge.textContent = task.pts + " p";
+        title.appendChild(badge);
+
+        var desc = document.createElement("p");
+        desc.className = "desc";
+        desc.textContent = task.desc;
+
+        var actions = document.createElement("div");
+        actions.className = "actions";
+
+        var previewBtn = document.createElement("button");
+        previewBtn.textContent = "Näytä esikatselu";
+
+        var codeBtn = document.createElement("button");
+        codeBtn.className = "ghost";
+        codeBtn.textContent = "Näytä lähdekoodi";
+
+        var link = document.createElement("a");
+        link.className = "open";
+        link.href = task.file;
+        link.target = "_blank";
+        link.textContent = "Avaa omana sivuna";
+
+        actions.appendChild(previewBtn);
+        actions.appendChild(codeBtn);
+        actions.appendChild(link);
+
+        var panel = document.createElement("div");
+        panel.className = "panel";
+
+        previewBtn.addEventListener("click", function () {
+            if (panel.dataset.mode === "preview") {
+                panel.innerHTML = "";
+                panel.dataset.mode = "";
+                previewBtn.textContent = "Näytä esikatselu";
+                return;
+            }
+            panel.innerHTML = "";
+            var frame = document.createElement("iframe");
+            frame.src = task.file;
+            frame.title = "Tehtävä " + task.n;
+            panel.appendChild(frame);
+            panel.dataset.mode = "preview";
+            previewBtn.textContent = "Piilota esikatselu";
+            codeBtn.textContent = "Näytä lähdekoodi";
+        });
+
+        codeBtn.addEventListener("click", function () {
+            if (panel.dataset.mode === "code") {
+                panel.innerHTML = "";
+                panel.dataset.mode = "";
+                codeBtn.textContent = "Näytä lähdekoodi";
+                return;
+            }
+            panel.innerHTML = "";
+            panel.dataset.mode = "code";
+            codeBtn.textContent = "Piilota lähdekoodi";
+            previewBtn.textContent = "Näytä esikatselu";
+
+            var pre = document.createElement("pre");
+            pre.textContent = "Ladataan...";
+            panel.appendChild(pre);
+
+            fetch(task.file)
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error(response.status + " " + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(function (source) {
+                    pre.textContent = source;
+                })
+                .catch(function () {
+                    var hint = document.createElement("p");
+                    hint.className = "hint";
+                    hint.textContent = "Lähdekoodin hakeminen ei onnistu tästä osoitteesta. " +
+                        "Selain estää fetch-pyynnöt kun sivu avataan file:// -osoitteesta. " +
+                        "Avaa sivu julkaistusta osoitteesta tai katso lähdekoodi selaimen " +
+                        "Näytä sivun lähdekoodi -toiminnolla (Ctrl+U).";
+                    panel.innerHTML = "";
+                    panel.appendChild(hint);
+                });
+        });
+
+        card.appendChild(title);
+        card.appendChild(desc);
+        card.appendChild(actions);
+        card.appendChild(panel);
+        grid.appendChild(card);
+    });
+
+</script>
+
+</body>
+</html>

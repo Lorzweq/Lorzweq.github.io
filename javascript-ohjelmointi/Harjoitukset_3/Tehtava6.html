@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 6</title>
+</head>
+<body>
+    <h1>Tehtävä 6</h1>   
+    <script>
+        function Person(name, age, phone, email) {
+            this.name = name;
+            this.age = age;
+            this.phone = phone;
+            this.email = email;
+
+            this.addAge = function() {
+                this.age += 1;
+            };
+        }
+
+        const person1 = new Person("Kirsi", 30, "0401234567", "kirsi.kernell@example.com");
+        const person2 = new Person("Matti", 25, "0509876543", "matti.meikäläinen@example.com");
+        const person3 = new Person("Liisa", 28, "0412345678", "liisa.lahtinen@example.com");
+
+        const people = [person1, person2, person3];
+
+        for (const person of people) {
+            for (const key in person) {
+                if (typeof person[key] !== "function") {
+                    console.log(key + ": " + person[key]);
+                }
+            }
+
+            person.addAge();
+            person.addAge()
+            console.log("Second call to addAge() returns: " + person.age);
+            console.log(person.age + " after birthday");
+            console.log("--------------------");
+        }
+
+
+
+    </script>
+</body>
+</html>

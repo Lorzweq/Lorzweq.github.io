@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 7</title>
+</head>
+<body>
+    <h1>Tehtävä 7</h1>
+    <div class="container">
+        <div id="timer"></div>
+        <div id="results"></div>
+
+    </div>
+    
+    <script>
+    function loading() {
+        const output = document.getElementById("results");
+        const time = document.getElementById("timer");
+        time.textContent = "00:00";
+
+        const messages = [
+            "OMG - Lady Gaga start singing!",
+            "NICE - fireworks!",
+            "NICE - fireworks!",
+            "NICE - fireworks!",
+            "NICE - fireworks!",
+            "NICE - fireworks!",
+            "WOW - It was the best concert in my life..."
+        ];
+
+        let index = 0;
+        let elapsed = 0;
+
+        const addLine = (text) => {
+            const line = document.createElement("p");
+            line.textContent = text;
+            output.appendChild(line);
+        };
+
+        const clock = setInterval(() => {
+            elapsed++;
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            time.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        }, 1000);
+
+        const showNext = () => {
+            addLine(messages[index]);
+            index++;
+
+            if (index >= messages.length) {
+                clearInterval(messageTimer);
+                clearInterval(clock);
+            }
+        };
+
+        showNext();                                   
+        const messageTimer = setInterval(showNext, 5000);
+    }
+
+    window.onload = loading;
+</script>
+</body>
+</html>

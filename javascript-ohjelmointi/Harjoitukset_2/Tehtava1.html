@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: max-content 200px;
+            gap: 10px 12px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .container {
+            border-style: dashed;
+            border-width: 2px;
+            width: 20em;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 1</h1>
+    <div class="container">
+        <h2>Information</h2>
+        <div class="form-grid">
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+            <label for="birthYear">Birth year:</label>
+            <input type="number" id="birthYear">
+        </div>
+        <button id="submitBtn">Show</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const output = document.getElementById("output");
+        const currentYear = new Date().getFullYear();
+
+        document.getElementById("submitBtn").addEventListener("click", function () {
+            const name = document.getElementById("name").value;
+            const birthYear = Number(document.getElementById("birthYear").value);
+
+            if (!name || !birthYear) {
+                output.innerHTML = "<p>Please fill in both fields.</p>";
+                return;
+            }
+
+            // Ikä lasketaan nykyisestä vuodesta, joka saadaan Date-luokalta
+            const age = currentYear - birthYear;
+
+            output.innerHTML = `
+                <p><strong>Hi, ${name}</strong>!</p>
+                <p>It has been a pleasure working with you <strong>${name}</strong> all these years.</p>
+                <p>Nice to see you are only <strong>${age}</strong> years old.</p>
+                <p>So we still have several years to work together.</p>`;
+        });
+    </script>
+</body>
+</html>

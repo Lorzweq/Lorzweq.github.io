@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 5</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        #searchInput {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 2px solid #000000;
+        }
+
+        #results {
+            margin-top: 10px;
+        }
+
+        .resultItem {
+            font-size: 18px;
+            padding: 4px 6px;
+            cursor: pointer;
+        }
+
+        .resultItem:hover,
+        .resultItem.active {
+            background-color: #d4d434;
+        }
+
+        #status {
+            font-size: 12px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 5</h1>
+    <h2>Fetch API - SearchForm</h2>
+    <input type="text" id="searchInput" placeholder="Search for a user..." autocomplete="off">
+
+    <div id="results"></div>
+    <p id="status"></p>
+
+    <script>
+        const searchInput =  document.getElementById("searchInput");
+        const resultsDiv = document.getElementById("results");
+        const status = document.getElementById("status");
+
+        let names = [];
+        let activeIndex = -1;
+        
+        async function getNames() {
+            const response = await fetch("nimet.json");
+
+            if (!response.ok) {
+                throw new Error("HTTP-virhe: " + response.status);
+            }
+
+            return await response.json();
+        }
+
+        function filterNames(searchText) {
+            const text = searchText.trim().toLowerCase();
+
+            if (text === "") {
+                return [];
+            }
+
+            return names.filter(name => name.toLowerCase().startsWith(text));
+        }
+
+        function renderResults(matches) {
+            resultsDiv.replaceChildren();
+            activeIndex = -1;
+
+            matches.forEach((name => {
+                const item = document.createElement("div");
+                item.className = "resultItem";
+                item.textContent = name;
+
+                item.addEventListener("click", () => selectName(name));
+
+                resultsDiv.appendChild(item);
+            }))
+        }
+
+        function selectName(name) {
+            searchInput.value = name;
+            resultsDiv.replaceChildren();
+            activeIndex = -1;
+            searchInput.focus();
+        }
+
+        function updateActive(items) {
+            items.forEach((item, index) => {
+                item.classList.toggle("active", index === activeIndex);
+            })
+        }
+
+        searchInput.addEventListener("input", () => {
+            renderResults(filterNames(searchInput.value));
+        });
+
+        searchInput.addEventListener("keydown", (event) => {
+            const items = Array.from(resultsDiv.children);
+            
+
+            if (event.key === "ArrowDown") {
+                if (items.length === 0) return; 
+                activeIndex = (activeIndex + 1) % items.length;
+                updateActive(items);
+                event.preventDefault();
+            } else if (event.key === "ArrowUp") {
+                if (items.length === 0) return;
+                activeIndex = (activeIndex - 1 + items.length) % items.length;
+                updateActive(items);
+                event.preventDefault();
+            } else if (event.key === "Enter") {
+                event.preventDefault();
+                if (activeIndex >= 0) {
+                    selectName(items[activeIndex].textContent);
+                } else {
+                    clearInput();
+                    resultsDiv.replaceChildren();
+                }
+            }
+                else if (event.key === "Escape") {
+                    event.preventDefault();
+                    clearInput();
+                    resultsDiv.replaceChildren();
+                    activeIndex = -1;
+                }
+            });
+
+        function clearInput() {
+            searchInput.value = "";
+        }
+
+        async function init() {
+            status.textContent = "Ladataan nimiä...";
+
+            try {
+                names = await getNames();
+                status.textContent = `${names.length} nimeä ladattu.`;
+            } catch (error) {
+                status.textContent = "Nimien lataaminen epäonnistui.";
+                console.error(error);
+            }
+        }
+
+        init();
+
+
+    </script>
+    
+</body>
+</html>

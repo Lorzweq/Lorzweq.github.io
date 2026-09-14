@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: max-content 200px;
+            gap: 10px 12px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .container {
+            border-style: dashed;
+            border-width: 2px;
+            width: 30em;
+            padding: 10px;
+        }
+        .btn {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 3</h1>
+    <div class="container">
+        <form id="f">
+            <div class="form-grid">
+                <label for="price">Syötä ALViton hinta:</label>
+                <input type="text" id="price">
+            </div>
+            <button type="button" class="btn" onclick="laskeALV(f.price.value)">Laske yleinen ALV (25,5%)</button>
+            <button type="button" class="btn" onclick="laskeALV(f.price.value, 14)">Laske elintarvike ALV (14%)</button>
+            <button type="button" class="btn" onclick="laskeALV(f.price.value, 10)">Laske lääke ALV (10%)</button>
+        </form>
+        <div id="results"></div>
+    </div>
+
+    <script>
+
+        function laskeALV(hinta, kanta = 25.5) {
+            const output = document.getElementById("results");
+            const price = Number(hinta);
+
+            if (isNaN(price) || hinta === "") {
+                output.innerHTML = "<p>Anna ALViton hinta numerona.</p>";
+                return;
+            }
+
+            const vat = price * (kanta / 100);
+            const total = price + vat;
+
+            output.innerHTML = `
+                <p>ALViton hinta: ${price} €</p>
+                <p>ALV-kanta: ${kanta} %</p>
+                <p>ALV: ${vat} €</p>
+                <p>ALVillinen hinta: ${total} €</p>`;
+        }
+    </script>
+</body>
+</html>

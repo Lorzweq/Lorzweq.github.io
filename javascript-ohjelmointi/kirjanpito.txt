@@ -1,19 +1,27 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 JavaScript-ohjelmointi (TT00CD80-3014): Harjoitustehtäväkirjanpito
-Päivitetty: 07.09.2026
+Päivitetty: 14.09.2026
 Hänninen Leevi [ai4010]
 Ratkaisut: https://lorzweq.dev/javascript-ohjelmointi/
-Harjoitustehtäväpisteet:   24
-Kaikki tarjolla olleet harjoitustehtäväpisteet:   24 (vain Harjoitukset 1 julkaistu tähän mennessä)
-24/24 => 100,0 %
+Harjoitustehtäväpisteet:   168
+Kaikki tarjolla olleet harjoitustehtäväpisteet:   168 (Harjoitukset 1-6)
+168/168 => 100,0 %
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+Tekoälyn käyttö on merkitty harjoituskerroittain Arenen liikennevalomallin oranssin tason mukaisesti: käyttö
+on sallittua, siitä kerrotaan ja se voi vaikuttaa arviointiin. Prosentti on oma arvio siitä, kuinka suuri
+osuus kerran ratkaisuista on syntynyt tekoälyn avulla. Jokainen palautettu ratkaisu on käyty läpi ja
+ymmärretty niin, että pystyn selittämään sen toimintalogiikan ja keskeiset valinnat.
+
 Kaikki ratkaisut ovat selaimessa ajettavia HTML-tiedostoja. Jokaisen harjoitussarjan
-tehtävät on koottu yhdelle sivulle, jossa lähdekoodi näkyy kortissa ja tehtävän voi
-suorittaa napista. Lisäksi jokainen tehtävä on omana tiedostonaan (lähdekoodi Ctrl+U).
+tehtävät on koottu yhdelle koontisivulle, jolta tehtävän voi suorittaa ja lähdekoodin
+lukea. Lisäksi jokainen tehtävä on omana tiedostonaan (lähdekoodi myös Ctrl+U).
 
 HARJOITUKSET 1: JavaScript-perusteet (24p)
 Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/
+Tekoälyn käyttö: AI10%
+      Ratkaisut kirjoitettu itse. Tekoälyä käytetty valmiiden ratkaisujen tarkistamiseen ja yksittäisten
+      kirjoitusvirheiden etsintään.
 
 H1T1: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava1.html
        name-, age- ja place-muuttujat, line-muuttuja koostettu niistä, tuloste konsoliin annetussa muodossa. Testattu myös jsbin.comissa.
@@ -36,17 +44,147 @@ H1T9: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava9.h
 H1T10: 3/3p https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava10.html
        Viisi tyylipistettä prompt()-funktiolla; summasta vähennetään suurin ja pienin.
 
-HARJOITUKSET 2: JavaScript-perusteet 2
-(ei vielä aloitettu)
+HARJOITUKSET 2: JavaScript-perusteet 2 (32p)
+Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/
+Tekoälyn käyttö: AI15%
+      Ratkaisut kirjoitettu itse. Tekoälyä käytetty vianetsintään ja sen varmistamiseen, että toteutus vastaa
+      tehtävänannon vaatimuksia.
 
-HARJOITUKSET 3: JavaScript-perusteet 3
-(ei vielä aloitettu)
+H2T1: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava1.html
+       Nimi ja syntymävuosi lomakkeelta; ikä lasketaan Date-luokan getFullYear()-funktiolla ja tulos kirjoitetaan innerHTML:llä Show-painikkeen klikkauksesta.
+H2T2: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava2.html
+       tulostaSumma(a, b) lukee lomakkeen kentät ja tulostaa tuloksen div-elementtiin (id=results); summan laskee erillinen laskeSumma(a, b), joka palauttaa kokonaisluvun.
+H2T3: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava3.html
+       Kaikki laskenta yhdessä laskeALV(hinta, kanta = 25.5) -funktiossa; yleinen kanta on oletusparametri, elintarvike (14) ja lääke (10) välitetään toisena parametrina painikkeen onclickista.
+H2T4: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava4.html
+       Luku arvotaan Math.random()-funktiolla väliltä 1-100, vihjeet Luku on pienempi! ja Luku on suurempi!, arvauskerrat lasketaan ja lopuksi YES - you did it with N guesses!.
+H2T5: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava5.html
+       setInterval kutsuu omaa updateLoading()-funktiota kerran sekunnissa, div päivittyy muotoon Loading... N% ja lopuksi Loading finished!; ajastin pysäytetään clearIntervalilla.
+H2T6: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava6.html
+       setInterval kutsuu omaa funktiota sekunnin välein; aika luetaan Date-objektilta ja kirjoitetaan div-elementtiin innerHTML-ominaisuudella.
+H2T7: 5/5p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava7.html
+       Ensimmäinen teksti näkyy heti latauksessa, NICE - fireworks! lisätään viiden sekunnin välein uutena p-elementtinä edellisten alle ja lopuksi tulee päätösteksti; lisäksi kulunutta aikaa näyttävä kello.
+H2T8: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava8.html
+       Spin arpoo kolme hedelmää, saldo alkaa 100 eurosta, kierros maksaa 1 euron, kaksi samaa tuottaa 2 ja kolme samaa 10 euroa; viestit WOHOO - You won N euros! ja Sorry - No win!, ja peli lukittuu viestillä Sorry you dont have any euros left!. Hedelmät on toteutettu SVG-symboleina jpg/png-kuvien sijaan.
 
-HARJOITUKSET 4: DOM
-(ei vielä aloitettu)
+HARJOITUKSET 3: JavaScript-perusteet 3 (37p)
+Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/
+Tekoälyn käyttö: AI20%
+      Koodi kirjoitettu itse. Tekoälyä käytetty virheiden etsintään ja tehtävänannon vaatimusten läpikäyntiin,
+      esimerkiksi sisäkkäisen olion käsittelyssä ja hissin tilanhallinnassa.
 
-HARJOITUKSET 5: JSON, Promise ja Fetch API
-(ei vielä aloitettu)
+H3T1: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava1.html
+       person-olio ominaisuuksilla firstName, lastName, age ja isStudent; arvot tulostetaan konsoliin for...in
+       -silmukalla.
+H3T2: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava2.html
+       Olioon on lisätty address-ominaisuus, age on arvossa 31 eikä isStudent-ominaisuutta ole; for...in
+       tulostaa jokaisen ominaisuuden muodossa avain: arvo.
+H3T3: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava3.html
+       student-olio, jonka address on itsessään olio. Silmukka tunnistaa sisäkkäisen olion typeof-tarkistuksella
+       ja käy sen läpi omalla silmukallaan.
+H3T4: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava4.html
+       fruits-olio, jossa avaimena hedelmän nimi ja arvona kappalemäärä; silmukka summaa määrät ja tulostaa
+       kokonaismäärän 11.
+H3T5: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava5.html
+       circle-olio, jolla radius, color sekä metodit getArea() ja getCircumference(); tulokset kahden desimaalin
+       tarkkuudella toFixed(2)-metodilla.
+H3T6: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava6.html
+       Person-konstruktorifunktio ES5-tyyliin ominaisuuksilla name, age, phone ja email. Kolme oliota luodaan
+       new-avainsanalla ja addAge() kasvattaa ikää yhdellä jokaisella kutsulla.
+H3T7: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava7.html
+       Book- ja Library-luokat ES6-syntaksilla. toString() palauttaa kirjan annetussa muodossa, addBook()
+       ilmoittaa lisäyksestä ja printBooks() tulostaa kirjat ja lukumäärän.
+H3T8: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava8.html
+       Vauhtilaskin-luokka. Constructor asettaa tunnit, minuutit, sekunnit ja kilometrit olion ominaisuuksiksi
+       ja calcKmhPace() palauttaa vauhdin km/h kahden desimaalin tarkkuudella.
+H3T9: 10/10p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava9.html
+       Hissi omana Elevator-luokkanaan erillisessä elevatorLogic.js-tiedostossa, tyylit style.css:ssä. Koko
+       näppäimistöä kuunnellaan yhdellä tapahtumankuuntelijalla, kerrokset on rajattu välille 1-100, näppäimet
+       lukittuvat liikkeen ajaksi ja näyttö vaihtaa viestien Elevator is now going to floor: X ja Elevator is
+       now in floor: X välillä.
 
-HARJOITUKSET 6: Kartat web-ohjelmoinnissa
-(ei vielä aloitettu)
+HARJOITUKSET 4: DOM (30p)
+Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/
+Tekoälyn käyttö: AI25%
+      Tehtävät kirjoitettu itse ja tarkistutettu tekoälyllä, joka osoitti muun muassa väärin kirjoitetun
+      backgroundColor-ominaisuuden, kahdella elementillä olleen saman id-arvon ja puuttuneen
+      tapahtumankuuntelijan. Tehtävien 6 ja 7 lähtökohta, eli pointer-tapahtumien käyttö ja Ball-luokan
+      rakenne, syntyi tekoälyn kanssa keskustellen, minkä jälkeen muokkasin toteutuksen omaan muotoonsa.
+
+H4T1: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava1.html
+       Span-elementin klikkaus vaihtaa img-elementin src-arvon data-src-attribuutista luettuun kuvaan ja
+       päivittää kuvatekstin; oletuksena näytetään car1.jpg.
+H4T2: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava2.html
+       hcpdata-taulukko käydään läpi for...of -silmukalla ja li-elementit luodaan DOMiin. Lista rakennetaan vain
+       kerran, koska funktio palaa heti jos ul-elementissä on jo lapsia. Taulukon määrittelyä ei ole muutettu
+       eikä ulkoisia kirjastoja käytetä.
+H4T3: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava3.html
+       SimpleToDo. Lisää-painike lisää tehtävän li-elementtinä, Tyhjää lista palauttaa alkutilan ja yksittäinen
+       rivi poistuu klikkaamalla. Klikkaus käsitellään yhdellä addEventListener-kuuntelijalla ul-elementin
+       tasolla.
+H4T4: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava4.html
+       Pudotusvalikon change-tapahtuma tulostaa värikoodin muuttamatta taustaa, tekstikenttä päivittyy
+       input-tapahtumassa reaaliajassa tulosalueen alimmalle riville ja numerot estetään sekä keydownilla että
+       replace-siivouksella, joka kattaa myös liitetyn tekstin. Painike vaihtaa tulosalueen taustavärin.
+H4T5: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava5.html
+       Ostoslista. Lomake lisää tuotteen omana korttinaan omaan div-elementtiin, kortti näyttää nimen, hinnan,
+       määrän ja loppusumman, ja Remove poistaa kortin. Syötteiden tarkistus hoituu selaimen required- ja
+       min-validoinnilla.
+H4T6: 4/4p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava6.html
+       Palloa siirretään pointerdown-, pointermove- ja pointerup-tapahtumilla. Tarttumakohta muistetaan, joten
+       pallo ei hyppää kursorin keskelle, ja setPointerCapture pitää tapahtumat pallolla myös nopeassa
+       liikkeessä.
+H4T7: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava7.html
+       Ball-luokka pitää sisällään pallon ominaisuudet, liikkeen ja piirron. Staattiset metodit arpovat pallojen
+       määrän, koon, värin ja nopeuden, ja requestAnimationFrame liikuttaa kaikkia palloja kimpoillen reunoista.
+       Monta palloa liikkuu yhtä aikaa.
+
+HARJOITUKSET 5: JSON, Promise ja Fetch API (26p)
+Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/
+Tekoälyn käyttö: AI50%
+      Tekoälyä käytetty tehtävien 1, 4 ja 5 rungon laatimiseen ja rakenteen suunnitteluun sekä rajapintojen
+      JSON-muodon selvittämiseen. Tehtävät 2 ja 3 kirjoitettu itse; tekoäly auttoi tunnistamaan CryptoComparen
+      401-vastauksen syyksi puuttuvan API-avaimen, minkä vuoksi vaihdoin CoinGeckon rajapintaan. Kaikki
+      ratkaisut käyty läpi ja muokattu itse.
+
+H5T1: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/Tehtava1.html
+       data.json haetaan palvelimelta getHouses()-funktiolla ja renderHouses() rakentaa ilmoitukset DOMia
+       muokkaamalla. JavaScript on erillisessä talot.js-tiedostossa ja tyylit erillisessä
+       tyylit.css-tiedostossa; hinta muotoillaan Intl.NumberFormatilla suomalaiseen muotoon.
+H5T2: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/Tehtava2.html
+       Painike hakee satunnaisen faktan päätepisteestä api.chucknorris.io/jokes/random ja näyttää vastauksen
+       value-kentän. Virheet käsitellään try/catchilla ja painike lukitaan haun ajaksi.
+H5T3: 2/2p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/Tehtava3.html
+       Hinta haetaan CoinGeckon simple/price-päätepisteestä, koska CryptoComparen min-api vaatii nykyään
+       API-avaimen ja palauttaa ilman sitä 401-vastauksen. Hinta muotoillaan Intl.NumberFormatilla euromuotoon
+       ja mukana näytetään hakuhetken kellonaika.
+H5T4: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/Tehtava4.html
+       Kaikki tuotteet haetaan päätepisteestä fakestoreapi.com/products ja näytetään korteissa kuvan, nimen,
+       kategorian, hinnan ja arvosanan kanssa. Kategoriavalikko täytetään /products/categories-päätepisteestä ja
+       rajaa näkymän yhteen tuoteryhmään.
+H5T5: 10/10p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/Tehtava5.html
+       Etunimet haetaan nimet.json-tiedostosta Fetch APIlla. Hakukenttä suodattaa nimen alkuosan perusteella
+       merkkikoosta riippumatta, nuoli ylös ja alas selaavat tuloksia korostaen valinnan, Enter kopioi
+       korostetun nimen kenttään tai tyhjentää kentän jos valintaa ei ole, ja Esc palauttaa alkutilan. Nimet
+       ladataan kerran sivun avauksessa ja suodatus tehdään muistissa, jotta jokainen näppäinpainallus ei
+       aiheuta omaa verkkopyyntöään.
+
+HARJOITUKSET 6: Kartat web-ohjelmoinnissa (19p)
+Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_6/
+Tekoälyn käyttö: AI45%
+      Tekoälyä käytetty Leafletin ja markercluster-lisäosan käytön selvittämiseen sekä tehtävien 1 ja 3 rungon
+      laatimiseen. Tehtävä 2 kirjoitettu itse; tekoäly osoitti localStorage-tallennuksen väärän järjestyksen
+      ja markerien piirtymisen kahteen kertaan.
+
+H6T1: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_6/Tehtava1.html
+       Viisi suosikkikaupunkia Leaflet-kartalla OpenStreetMapin taustakartalla. Jokaisella kaupungilla on
+       markeri, ja klikkaus avaa popupin nimen ja kuvauksen kanssa.
+H6T2: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_6/Tehtava2.html
+       Suosikkipaikat lisätään web-lomakkeella ja tallennetaan selaimen Local Storageen
+       JSON.stringify-metodilla. Sivun avautuessa paikat luetaan JSON.parse-metodilla ja piirretään kartalle,
+       joten ne säilyvät myös selaimen sulkemisen yli.
+H6T3: 10/10p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_6/Tehtava3.html
+       49 golfkenttää luetaan golf.json-tiedostosta Fetch APIlla, ja markerit lisätään kartan sijaan
+       Leaflet.markercluster-lisäosan klusterikerrokseen, joka niputtaa lähekkäiset kentät ja hajottaa ne
+       zoomattaessa. Markerin klikkaus avaa popupin, jossa näkyvät kuva, kentän nimi, taso, osoite,
+       puhelinnumero, sähköposti, verkkosivulinkki ja kuvausteksti; puuttuva kuva korvataan varakuvalla.
