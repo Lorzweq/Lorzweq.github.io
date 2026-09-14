@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 80px;
+            width: 300px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card {
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 5</h1>
+
+    <form id="itemForm" class="container">
+        <h2>Shopping List</h2>
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter item name" required>
+        <label for="priceInput">Price:</label>
+        <input type="number" id="priceInput" placeholder="Enter the price" min="0" step="0.01" required>
+        <label for="countInput">Count:</label>
+        <input type="number" id="countInput" placeholder="Enter the count" min="1" step="1" required>
+        <button type="submit">Add to List</button>
+    </form>
+
+    <div class="cardContainer">
+    </div>
+    <script>
+        const nameInput = document.getElementById("nameInput");
+        const priceInput = document.getElementById("priceInput");
+        const countInput = document.getElementById("countInput");
+        const itemForm = document.getElementById("itemForm");
+        const cardContainer = document.querySelector(".cardContainer");
+
+        function createCard(name, price, count) {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = `
+                <h3>${name}</h3>
+                <p>Price: ${price} €</p>
+                <p>Count: ${count}</p>
+                <p>Total: ${(price * count).toFixed(2)} €</p>
+            `;
+
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.addEventListener("click", () => removeCard(card));
+            card.appendChild(removeButton);
+
+            cardContainer.appendChild(card);
+        }
+
+        function removeCard(card) {
+            card.remove();
+        }
+
+        function addItem(event) {
+            event.preventDefault();  
+            const name = nameInput.value.trim();
+            const price = parseFloat(priceInput.value);
+            const count = parseInt(countInput.value);
+
+            createCard(name, price, count);
+            itemForm.reset();
+            nameInput.focus();
+        }
+
+        itemForm.addEventListener("submit", addItem);
+    </script>
+</body>
+</html>

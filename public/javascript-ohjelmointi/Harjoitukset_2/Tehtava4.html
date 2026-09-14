@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        input {
+            padding: 5px;
+        }
+        .container {
+            border-style: dashed;
+            border-width: 2px;
+            width: 25em;
+            padding: 10px;
+        }
+        #results {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 4</h1>
+    <div class="container">
+        <h2>Guess game</h2>
+        <form id="f">
+            <p>Guess a number between 1 and 100:</p>
+            <label for="guess">Give a number:</label>
+            <input type="text" id="guess">
+            <button type="button" onclick="checkGuess(f.guess.value)">Guess</button>
+        </form>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess(guess) {
+            const output = document.getElementById("results");
+            const number = Number(guess);
+
+            if (isNaN(number) || guess === "") {
+                output.innerHTML = "<p>Anna luku väliltä 1-100.</p>";
+                return;
+            }
+
+            attempts++;
+
+            if (number === randomNumber) {
+                output.innerHTML = `<p>YES - you did it with ${attempts} guesses!</p>`;
+            } else if (randomNumber < number) {
+                output.innerHTML = "<p>Luku on pienempi!</p>";
+            } else {
+                output.innerHTML = "<p>Luku on suurempi!</p>";
+            }
+        }
+    </script>
+</body>
+</html>

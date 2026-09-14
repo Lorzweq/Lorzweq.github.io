@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: max-content 200px;
+            gap: 10px 12px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .container {
+            border-style: dashed;
+            border-width: 2px;
+            width: 20em;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 2</h1>
+    <div class="container">
+        <h2>Calculate numbers together</h2>
+        <form id="f">
+            <div class="form-grid">
+                <label for="n1">Number 1:</label>
+                <input type="text" id="n1">
+                <label for="n2">Number 2:</label>
+                <input type="text" id="n2">
+            </div>
+            <button type="button" onclick="tulostaSumma(f.n1.value, f.n2.value)">Calculate Sum</button>
+        </form>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function laskeSumma(a, b) {
+            return parseInt(a, 10) + parseInt(b, 10);
+        }
+        function tulostaSumma(n1, n2) {
+            const output = document.getElementById("results");
+            const sum = laskeSumma(n1, n2);
+
+            if (isNaN(sum)) {
+                output.innerHTML = "<p>Please give two numbers.</p>";
+                return;
+            }
+
+            output.innerHTML = `<p>Sum is ${sum}.</p>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* ---------- perusasetukset ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: #f4f4f4;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #000;
+}
+
+/* ---------- hissin runko ---------- */
+
+.elevator {
+    width: 360px;
+    padding: 22px;
+    background: #fff;
+    border: 2px dashed #333;
+}
+
+/* ---------- näyttö ---------- */
+
+.display {
+    width: 100%;
+    height: 54px;
+    padding: 0 14px;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: #000;
+}
+
+.display:focus {
+    outline: 2px solid #888;
+    outline-offset: 1px;
+}
+
+.status {
+    margin: 18px 0 24px 0;
+    font-size: 1.15rem;
+}
+
+/* ---------- näppäimistö ---------- */
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    justify-items: center;
+}
+
+.key {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+
+    /* paksu musta rengas tulee bordersta, ohut ulkoviiva outlinesta */
+    border: 13px solid #111;
+    outline: 2px solid #111;
+    outline-offset: 4px;
+
+    background: #fff;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.06s, box-shadow 0.06s;
+}
+
+/* painallus painaa nappia alaspäin */
+.key:active {
+    transform: translateY(2px) scale(0.97);
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.key:focus-visible {
+    outline-color: #069;
+}
+
+/* C ja GO erottuvat tummempina */
+.key--action {
+    border-color: #2b2b2b;
+    background: linear-gradient(180deg, #f2f2f2 0%, #cfcfcf 100%);
+    font-size: 1.6rem;
+}
+
+.key--go {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* ---------- lukitus liikkeen ajaksi ---------- */
+
+/* Hissi ei voi vaihtaa haluttua kerrosta kun se liikkuu.
+   JavaScript lisää tämän luokan .keypad-elementtiin liikkeen ajaksi. */
+.keypad.locked .key {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* ---------- kapeat näytöt ---------- */
+
+@media (max-width: 400px) {
+    .elevator {
+        width: 100%;
+    }
+
+    .key {
+        width: 76px;
+        height: 76px;
+        border-width: 10px;
+        font-size: 1.8rem;
+    }
+}

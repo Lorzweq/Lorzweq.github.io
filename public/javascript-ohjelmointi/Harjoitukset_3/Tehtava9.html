@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 9</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="elevator">
+        <input type="text" class="display" id="display" readonly>
+
+        <p class="status" id="status">Elevator is now in floor: 1</p>
+
+        <div class="keypad" id="keypad">
+            <button type="button" class="key" data-key="1">1</button>
+            <button type="button" class="key" data-key="2">2</button>
+            <button type="button" class="key" data-key="3">3</button>
+            <button type="button" class="key" data-key="4">4</button>
+            <button type="button" class="key" data-key="5">5</button>
+            <button type="button" class="key" data-key="6">6</button>
+            <button type="button" class="key" data-key="7">7</button>
+            <button type="button" class="key" data-key="8">8</button>
+            <button type="button" class="key" data-key="9">9</button>
+            <button type="button" class="key key--action" data-key="C">C</button>
+            <button type="button" class="key" data-key="0">0</button>
+            <button type="button" class="key key--action key--go" data-key="GO">GO</button>
+        </div>
+    </div>
+
+    <script src="elevatorLogic.js"></script>
+</body>
+</html>

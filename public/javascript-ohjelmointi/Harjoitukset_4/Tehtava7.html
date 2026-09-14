@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 7</title>
+     <style>
+        #area {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border: 2px solid #333;
+            overflow: hidden;
+        }
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 7</h1>
+    <div id="area"></div>
+
+
+    <script>
+       const area = document.getElementById("area");
+       
+       class Ball {
+            constructor(x, y, dx, dy, size, color) {
+                this.x = x;
+                this.y = y;
+                this.dx = dx;
+                this.dy = dy;
+                this.size = size;
+                this.color = color;
+
+                this.element = document.createElement("div");
+                this.element.classList.add("ball");
+                this.element.style.width = size + "px";
+                this.element.style.height = size + "px";
+                this.element.style.backgroundColor = color;
+                area.appendChild(this.element);
+
+                this.draw();
+            }
+
+            move() {
+                this.x += this.dx;
+                this.y += this.dy;
+
+                if (this.x < 0 || this.x + this.size > area.clientWidth) {
+                    this.dx = -this.dx;
+                }
+                if (this.y < 0 || this.y + this.size > area.clientHeight) {
+                    this.dy = -this.dy;
+                }
+
+                this.draw();
+            }
+
+            draw() {
+                this.element.style.left = this.x + "px";
+                this.element.style.top = this.y + "px";
+            }
+            static getRandomAmountOfBalls() {
+                return Math.floor(Math.random() * 11) + 50; 
+            }
+
+            static getRandomColor() {
+                return `hsl(${Math.floor(Math.random() * 360)}, 80%, 50%)`;
+            }
+
+            static createBalls(amount) {
+                const balls = [];
+                for (let i = 0; i < amount; i++) {
+                    const size = Math.floor(Math.random() * 30) + 20;         
+                    const x = Math.random() * (area.clientWidth - size);
+                    const y = Math.random() * (area.clientHeight - size);
+                    const dx = (Math.random() * 4 + 1) * (Math.random() < 0.5 ? -1 : 1); 
+                    const dy = (Math.random() * 4 + 1) * (Math.random() < 0.5 ? -1 : 1);
+                    balls.push(new Ball(x, y, dx, dy, size, Ball.getRandomColor()));
+                }
+                return balls;
+            }
+        }
+            const balls = Ball.createBalls(Ball.getRandomAmountOfBalls());
+
+            function animate() {
+                balls.forEach(ball => {
+                    ball.move();
+                });
+                requestAnimationFrame(animate);
+            }
+
+
+            
+
+
+            animate();
+
+       
+    </script>
+</body>
+</html>

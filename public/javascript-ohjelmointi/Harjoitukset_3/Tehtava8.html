@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 8</title>
+    <style>
+        body {
+            width: 250px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+        input[type="text"] { width: 60px; }
+        button {
+            background-color: #069;
+            border-radius: 5px;
+            color: #fff;
+            margin: 15px 0 5px 0;
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        #results {
+            border: 1px dashed #000;
+            padding: 15px;
+            background-color: #adbed8;
+            margin-top: 15px;
+        }
+        #results:empty { display: none; }
+    </style>
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 8</h1>
+
+    <form id=f>
+        <table>
+            <tbody>
+                <tr><td>Tunnit: </td><td><input type="text" id="n1" placeholder="1" value="1"></td></tr>
+                <tr><td>Minuutit: </td><td><input type="text" id="n2"  placeholder="20" value="20"></td></tr>
+                <tr><td>Sekunnit: </td><td><input type="text" id="n3"  placeholder="0" value="0"></td></tr>
+                <tr><td>Kilometrit:</td><td><input type="text" id="n4"  placeholder="0" value="10"></td></tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="laskeVauhti()">Laske nopeus</button>
+    </form>
+    <div id="results"></div>
+    <script>
+        class Vauhtilaskin {
+            constructor(tunnit, minuutit, sekunnit, kilometrit) {
+                this.tunnit = parseFloat(tunnit);
+                this.minuutit = parseFloat(minuutit);
+                this.sekunnit = parseFloat(sekunnit);
+                this.kilometrit = parseFloat(kilometrit);
+            }
+
+            calcKmhPace() {
+                const aikaTunteina = this.tunnit + (this.minuutit / 60) + (this.sekunnit / 3600);
+                const nopeusKmh = this.kilometrit / aikaTunteina;
+
+                return nopeusKmh.toFixed(2);
+            }
+
+        }
+
+        function laskeVauhti() {
+            const laskin = new Vauhtilaskin(
+                document.getElementById("n1").value,
+                document.getElementById("n2").value,
+                document.getElementById("n3").value,
+                document.getElementById("n4").value
+            );
+            document.getElementById("results").innerHTML =
+            "<p>Vauhti on " + laskin.calcKmhPace() + " km/h</p>";
+        }
+
+ 
+    </script>
+</body>
+</html>

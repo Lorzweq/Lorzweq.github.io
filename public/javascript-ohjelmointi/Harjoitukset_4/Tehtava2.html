@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 2</title>
+    <script>
+    var hcpdata = [{ "name": "Ari", "hcp": 54 },
+               { "name": "Pasi", "hcp": 5 },
+               { "name": "Seppo", "hcp": 20 }];
+
+    function printTasoitukset() {
+        const list = document.getElementById("hcplist");
+        
+        if (list.children.length > 0) {
+            return;
+        }
+
+        for (const item of hcpdata) {
+            const li = document.createElement("li");
+            li.textContent = item.name + " " + item.hcp;
+            list.appendChild(li);
+        }
+    }
+    </script>
+</head>
+<body>
+    <h1>Tehtävä 2</h1>
+
+    <button onclick="printTasoitukset()">Tulosta tasoitukset</button>
+    <ul id="hcplist"></ul>
+    
+</body>
+</html>

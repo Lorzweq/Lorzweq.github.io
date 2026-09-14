@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            border-style: dashed;
+            border-width: 2px;
+            width: 25em;
+            padding: 10px;
+        }
+        #results {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 5</h1>
+    <div class="container">
+        <h2>Loading simulation</h2>
+        <p>Simulating a loading process from 0% to 100%.</p>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const INTERVAL = 1000;   
+        const STEP = 1;          
+
+        let output;
+        let percent = 0;
+        let timer;
+
+        function updateLoading() {
+            percent += STEP;
+
+            if (percent >= 100) {
+                percent = 100;
+                output.textContent = "Loading finished!";
+                clearInterval(timer);
+                return;
+            }
+
+            output.textContent = `Loading... ${percent}%`;
+        }
+
+        function loading() {
+            output = document.getElementById("results");
+            output.textContent = `Loading... ${percent}%`;
+
+            timer = setInterval(updateLoading, INTERVAL);
+        }
+
+        window.onload = loading;
+    </script>
+</body>
+</html>

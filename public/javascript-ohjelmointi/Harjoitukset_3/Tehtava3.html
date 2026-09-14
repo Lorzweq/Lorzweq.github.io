@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 3</title>
+</head>
+<body>
+    <h1>Tehtävä 3</h1>
+    <script>
+        let student = {
+            name: "Kirsi Kernell",
+            age: 30,
+            address: {
+                street: "Piippukatu 2",
+                city: "Jyväskylä",
+                zipCode: "40100"
+            }
+        }
+
+        for (let key in student) {
+            const value = student[key];
+
+            if (typeof value === "object" && value !== null) {
+                console.log(key + ":");
+                for (let subKey in value) {
+                    console.log("  " + subKey + ": " + value[subKey]);
+                }
+            } else {
+                console.log(key + ": " + value);
+            }
+        }
+    </script>
+</body>
+</html>

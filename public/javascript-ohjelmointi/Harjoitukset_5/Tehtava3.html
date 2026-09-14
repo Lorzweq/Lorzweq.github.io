@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 3</title>
+</head>
+<body>
+    <h1>Tehtävä 3</h1>
+    <p>Hae Bitcoinin hinta euroissa:</p>
+    <button onclick="fetchData()">Hae hinta</button>
+    
+    <script>
+        async function fetchData() {
+            try {
+                // CoinGecko API, koska CryptoCompare API vaatii kirjautumisen
+                const response = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur");
+
+                if (!response.ok) {
+                    throw new Error("HTTP-virhe: " + response.status);
+                }
+                const dateTime = new Date().toLocaleString();
+                const data = await response.json();
+                const btcPrice = data.bitcoin.eur;
+                const priceElement = document.createElement("p");
+                priceElement.textContent = dateTime  + "  " + "Price:" + btcPrice +" €";
+                document.body.appendChild(priceElement);
+            } catch (error) {
+                console.error("Virhe haettaessa dataa:", error);
+            }
+        }
+    </script>
+</body>
+</html>

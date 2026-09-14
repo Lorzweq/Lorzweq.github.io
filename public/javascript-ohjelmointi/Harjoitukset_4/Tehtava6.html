@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 6</title>
+    <style>
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 6</h1>
+    <div class="ball"></div>
+
+
+    <script>
+        const ball = document.querySelector(".ball");
+        let dragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        ball.addEventListener("pointerdown", (event) => {
+            dragging = true;
+            offsetX = event.clientX - ball.offsetLeft;
+            offsetY = event.clientY - ball.offsetTop;
+            ball.setPointerCapture(event.pointerId);
+            ball.style.cursor = "grabbing";
+        });
+
+        ball.addEventListener("pointermove", (event) => {
+            if (!dragging) return; 
+                ball.style.left = (event.clientX - offsetX) + "px";
+                ball.style.top = (event.clientY - offsetY) + "px";
+            
+        });
+
+        ball.addEventListener("pointerup", () => {
+            dragging = false;
+            ball.style.cursor = "grab";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 2</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+        }
+
+        #map {
+            width: 800px;
+            height: 600px;
+            border: 1px solid #cccccc;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            width: 300px;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 2</h1>
+    <form>
+        <p>Add a new city:</p>
+        <input type="text" id="cityName" placeholder="City name">
+        <input type="number" id="cityLat" placeholder="Latitude" step="any" min="-90" max="90" required>
+        <input type="number" id="cityLon" placeholder="Longitude" step="any" min="-180" max="180" required>
+        <input type="text" id="cityText" placeholder="Description">
+        <button type="submit">Add City</button>
+    </form>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const cities = JSON.parse(localStorage.getItem("cities")) || [];
+        const form = document.querySelector("form");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const name = document.getElementById("cityName").value.trim();
+            const lat = parseFloat(document.getElementById("cityLat").value);
+            const lon = parseFloat(document.getElementById("cityLon").value);
+            const text = document.getElementById("cityText").value.trim();
+
+
+            if (name && !isNaN(lat) && !isNaN(lon) && text) {
+                const city = { name, lat, lon, text };
+                cities.push(city);
+                localStorage.setItem("cities", JSON.stringify(cities));
+                L.marker([lat, lon])
+                    .addTo(map)
+                    .bindPopup(`<b>${name}</b><br>${text}<br>${lat}, ${lon}`);
+                form.reset();
+            } else {
+                alert("Please fill in all fields correctly.");
+            }
+        });
+
+        const map = L.map('map').setView([15.4978, 2.7610], 2);
+
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; OpenStreetMap"
+        }).addTo(map);
+
+        cities.forEach(city => {
+            L.marker([city.lat, city.lon])
+                .addTo(map)
+                .bindPopup(`<b>${city.name}</b><br>${city.text}<br>${city.lat}, ${city.lon}`);
+        })
+    </script>
+</body>
+</html>

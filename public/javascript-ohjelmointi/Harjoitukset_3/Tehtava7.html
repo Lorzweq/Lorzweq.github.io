@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 7</title>
+</head>
+<body>
+    <h1>Tehtävä 7</h1>
+    <p>Avaa selaimen konsoli (F12) nähdäksesi tulosteen.</p>
+
+    <script>
+        class Book {
+            constructor(name, author, publisher, year) {
+                this.name = name;
+                this.author = author;
+                this.publisher = publisher;
+                this.year = year;
+            }
+
+            toString() {
+                return "book: " + this.name + ", " + this.author + ", " +
+                       this.publisher + ", " + this.year;
+            }
+        }
+
+        class Library {
+            constructor() {
+                this.books = [];
+            }
+
+            addBook(book) {
+                this.books.push(book);
+                console.log("A new book is added to library: " + book.name);
+            }
+
+            printBooks() {
+                console.log("Library has a following books:");
+
+                this.books.forEach(book => {
+                    console.log(" - " + book.toString());
+                });
+
+                console.log("Library has " + this.books.length + " books");
+            }
+        }
+
+        const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", "Charles Scribner's Sons", 1925);
+        const book2 = new Book("To Kill a Mockingbird", "Harper Lee", "J.B. Lippincott & Co.", 1960);
+        const book3 = new Book("1984", "George Orwell", "Secker & Warburg", 1949);
+
+        const library = new Library();
+
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+
+        library.printBooks();
+    </script>
+</body>
+</html>

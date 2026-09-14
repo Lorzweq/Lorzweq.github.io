@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 3</h1>
+    
+    <h2>SimpleToDo</h2>
+    <p>ToDo:</p>
+    <input type="text" id="todoInput" placeholder="Add a new task">
+    <button onclick="addTask()">Lisää</button>
+    <button onclick="clearTasks()">Tyhjää lista</button>
+    <ul id="lista"></ul>
+
+    <script>
+        const lista = document.getElementById("lista");
+        lista.addEventListener("click", function(event) {
+            if (event.target.tagName === "LI") {
+                event.target.remove();
+            }
+        });
+        function addTask() {
+            const input = document.getElementById("todoInput");
+            const task = input.value.trim();
+            if (task) {
+                const li = document.createElement("li");
+                li.textContent = task + " (click to remove)";
+                lista.appendChild(li);
+                input.value = "";
+            }
+        }
+
+        function clearTasks() {
+            const todoList = document.getElementById("lista");
+            todoList.innerHTML = "";
+        }
+    </script>
+</body>
+</html>

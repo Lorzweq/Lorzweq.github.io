@@ -136,6 +136,24 @@
     td.note {
         color: var(--text);
     }
+    .ai {
+        display: inline-block;
+        margin-left: 0.5rem;
+        padding: 0.1rem 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        color: var(--muted);
+        vertical-align: middle;
+    }
+    p.aiuse {
+        margin: 0 0 0.75rem 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+        line-height: 1.55;
+    }
     .upcoming {
         color: var(--muted);
         font-style: italic;
@@ -154,11 +172,11 @@
 <nav class="topnav">
     <a href="./">Etusivu</a>
     <a href="Harjoitukset_1/">Harjoitukset 1</a>
-    <a class="disabled" href="Harjoitukset_2/">Harjoitukset 2</a>
-    <a class="disabled" href="Harjoitukset_3/">Harjoitukset 3</a>
-    <a class="disabled" href="Harjoitukset_4/">Harjoitukset 4</a>
-    <a class="disabled" href="Harjoitukset_5/">Harjoitukset 5</a>
-    <a class="disabled" href="Harjoitukset_6/">Harjoitukset 6</a>
+    <a href="Harjoitukset_2/">Harjoitukset 2</a>
+    <a href="Harjoitukset_3/">Harjoitukset 3</a>
+    <a href="Harjoitukset_4/">Harjoitukset 4</a>
+    <a href="Harjoitukset_5/">Harjoitukset 5</a>
+    <a href="Harjoitukset_6/">Harjoitukset 6</a>
     <a class="active" href="kirjanpito.html">Kirjanpito</a>
 </nav>
 <main>
@@ -167,17 +185,20 @@
 
     <dl class="summary">
         <dt>Opiskelija</dt><dd>Leevi Hänninen [ai4010]</dd>
-        <dt>Päivitetty</dt><dd>07.09.2026</dd>
+        <dt>Päivitetty</dt><dd>14.09.2026</dd>
         <dt>Ratkaisut</dt><dd><a href="https://lorzweq.dev/javascript-ohjelmointi/">https://lorzweq.dev/javascript-ohjelmointi/</a></dd>
-        <dt>Harjoitustehtäväpisteet</dt><dd class="total">24</dd>
-        <dt>Tarjolla olleet pisteet</dt><dd>24 (vain Harjoitukset 1 julkaistu tähän mennessä)</dd>
-        <dt>Osuus</dt><dd class="total">24/24 = 100,0 %</dd>
+        <dt>Harjoitustehtäväpisteet</dt><dd class="total">168</dd>
+        <dt>Tarjolla olleet pisteet</dt><dd>168 (Harjoitukset 1-6)</dd>
+        <dt>Osuus</dt><dd class="total">168/168 = 100,0 %</dd>
     </dl>
+
+    <p class="lead">Tekoälyn käyttö on merkitty harjoituskerroittain Arenen liikennevalomallin oranssin tason mukaisesti: käyttö on sallittua, siitä kerrotaan ja se voi vaikuttaa arviointiin. Prosentti on oma arvio siitä, kuinka suuri osuus kerran ratkaisuista on syntynyt tekoälyn avulla. Jokainen palautettu ratkaisu on käyty läpi ja ymmärretty niin, että pystyn selittämään sen toimintalogiikan ja keskeiset valinnat.</p>
 
     <p class="lead">Kaikki ratkaisut ovat selaimessa ajettavia HTML-tiedostoja. Jokaisen harjoitussarjan tehtävät on koottu yhdelle sivulle, jossa lähdekoodi näkyy kortissa ja tehtävän voi suorittaa napista. Lisäksi jokainen tehtävä on omana tiedostonaan, jonka lähdekoodin näkee selaimella (Ctrl+U).</p>
 
-    <h2>Harjoitukset 1: JavaScript-perusteet (24 p)</h2>
+    <h2>Harjoitukset 1: JavaScript-perusteet (24 p) <span class="ai">AI10%</span></h2>
     <p>Koontisivu: <a href="Harjoitukset_1/">lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/</a></p>
+    <p class="aiuse"><strong>Tekoälyn käyttö:</strong> Ratkaisut kirjoitettu itse. Tekoälyä käytetty valmiiden ratkaisujen tarkistamiseen ja yksittäisten kirjoitusvirheiden etsintään.</p>
     <div class="table-wrap">
     <table>
         <thead>
@@ -198,20 +219,102 @@
     </table>
     </div>
 
-    <h2>Harjoitukset 2: JavaScript-perusteet 2</h2>
-    <p class="upcoming">Ei vielä aloitettu.</p>
+    <h2>Harjoitukset 2: JavaScript-perusteet 2 (32 p) <span class="ai">AI10%</span></h2>
+    <p>Koontisivu: <a href="Harjoitukset_2/">lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/</a></p>
+    <p class="aiuse"><strong>Tekoälyn käyttö:</strong> Ratkaisut kirjoitettu itse. Tekoälyä käytetty valmiiden ratkaisujen tarkistamiseen ja tehtävän vaatimusten täyttämiseen.</p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Tehtävä</th><th>Pisteet</th><th>Kommentti</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava1.html">H2T1</a></td><td class="pts">3/3</td><td class="note">Nimi ja syntymävuosi lomakkeelta; ikä lasketaan Date-luokan getFullYear()-funktiolla ja tulos kirjoitetaan innerHTML:llä Show-painikkeen klikkauksesta.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava2.html">H2T2</a></td><td class="pts">3/3</td><td class="note">tulostaSumma(a, b) lukee lomakkeen kentät ja tulostaa tuloksen div-elementtiin (id=results); summan laskee erillinen laskeSumma(a, b), joka palauttaa kokonaisluvun.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava3.html">H2T3</a></td><td class="pts">4/4</td><td class="note">Kaikki laskenta yhdessä laskeALV(hinta, kanta = 25.5) -funktiossa; yleinen kanta on oletusparametri, elintarvike (14) ja lääke (10) välitetään toisena parametrina painikkeen onclickista.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava4.html">H2T4</a></td><td class="pts">4/4</td><td class="note">Luku arvotaan Math.random()-funktiolla väliltä 1-100, vihjeet Luku on pienempi! ja Luku on suurempi!, arvauskerrat lasketaan ja lopuksi YES - you did it with N guesses!.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava5.html">H2T5</a></td><td class="pts">3/3</td><td class="note">setInterval kutsuu omaa updateLoading()-funktiota kerran sekunnissa, div päivittyy muotoon Loading... N% ja lopuksi Loading finished!; ajastin pysäytetään clearIntervalilla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava6.html">H2T6</a></td><td class="pts">4/4</td><td class="note">setInterval kutsuu omaa funktiota sekunnin välein; aika luetaan Date-objektilta ja kirjoitetaan div-elementtiin innerHTML-ominaisuudella.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava7.html">H2T7</a></td><td class="pts">5/5</td><td class="note">Ensimmäinen teksti näkyy heti latauksessa, NICE - fireworks! lisätään viiden sekunnin välein uutena p-elementtinä edellisten alle ja lopuksi tulee päätösteksti; lisäksi kulunutta aikaa näyttävä kello.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_2/Tehtava8.html">H2T8</a></td><td class="pts">6/6</td><td class="note">Spin arpoo kolme hedelmää, saldo alkaa 100 eurosta, kierros maksaa 1 euron, kaksi samaa tuottaa 2 ja kolme samaa 10 euroa; viestit WOHOO - You won N euros! ja Sorry - No win!, ja peli lukittuu viestillä Sorry you dont have any euros left!. Hedelmät on toteutettu SVG-symboleina jpg/png-kuvien sijaan.</td></tr>
+        </tbody>
+    </table>
+    </div>
 
-    <h2>Harjoitukset 3: JavaScript-perusteet 3</h2>
-    <p class="upcoming">Ei vielä aloitettu.</p>
+    <h2>Harjoitukset 3: JavaScript-perusteet 3 (37 p) <span class="ai">AI10%</span></h2>
+    <p>Koontisivu: <a href="Harjoitukset_3/">lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/</a></p>
+    <p class="aiuse"><strong>Tekoälyn käyttö:</strong> Koodi kirjoitettu itse. Tekoälyä käytetty virheiden etsintään ja tehtävänannon vaatimusten läpikäyntiin, esimerkiksi sisäkkäisen olion käsittelyssä ja hissin tilanhallinnassa.</p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Tehtävä</th><th>Pisteet</th><th>Kommentti</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava1.html">H3T1</a></td><td class="pts">2/2</td><td class="note">person-olio ominaisuuksilla firstName, lastName, age ja isStudent; arvot tulostetaan konsoliin for...in -silmukalla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava2.html">H3T2</a></td><td class="pts">2/2</td><td class="note">Olioon on lisätty address-ominaisuus, age on arvossa 31 eikä isStudent-ominaisuutta ole; for...in tulostaa jokaisen ominaisuuden muodossa avain: arvo.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava3.html">H3T3</a></td><td class="pts">2/2</td><td class="note">student-olio, jonka address on itsessään olio. Silmukka tunnistaa sisäkkäisen olion typeof-tarkistuksella ja käy sen läpi omalla silmukallaan.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava4.html">H3T4</a></td><td class="pts">3/3</td><td class="note">fruits-olio, jossa avaimena hedelmän nimi ja arvona kappalemäärä; silmukka summaa määrät ja tulostaa kokonaismäärän 11.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava5.html">H3T5</a></td><td class="pts">4/4</td><td class="note">circle-olio, jolla radius, color sekä metodit getArea() ja getCircumference(); tulokset kahden desimaalin tarkkuudella toFixed(2)-metodilla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava6.html">H3T6</a></td><td class="pts">4/4</td><td class="note">Person-konstruktorifunktio ES5-tyyliin ominaisuuksilla name, age, phone ja email. Kolme oliota luodaan new-avainsanalla ja addAge() kasvattaa ikää yhdellä jokaisella kutsulla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava7.html">H3T7</a></td><td class="pts">4/4</td><td class="note">Book- ja Library-luokat ES6-syntaksilla. toString() palauttaa kirjan annetussa muodossa, addBook() ilmoittaa lisäyksestä ja printBooks() tulostaa kirjat ja lukumäärän.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava8.html">H3T8</a></td><td class="pts">6/6</td><td class="note">Vauhtilaskin-luokka. Constructor asettaa tunnit, minuutit, sekunnit ja kilometrit olion ominaisuuksiksi ja calcKmhPace() palauttaa vauhdin km/h kahden desimaalin tarkkuudella.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_3/Tehtava9.html">H3T9</a></td><td class="pts">10/10</td><td class="note">Hissi omana Elevator-luokkanaan erillisessä elevatorLogic.js-tiedostossa, tyylit style.css:ssä. Koko näppäimistöä kuunnellaan yhdellä tapahtumankuuntelijalla, kerrokset on rajattu välille 1-100, näppäimet lukittuvat liikkeen ajaksi ja näyttö vaihtaa viestien Elevator is now going to floor: X ja Elevator is now in floor: X välillä.</td></tr>
+        </tbody>
+    </table>
+    </div>
 
-    <h2>Harjoitukset 4: DOM</h2>
-    <p class="upcoming">Ei vielä aloitettu.</p>
+    <h2>Harjoitukset 4: DOM (30 p) <span class="ai">AI25%</span></h2>
+    <p>Koontisivu: <a href="Harjoitukset_4/">lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/</a></p>
+    <p class="aiuse"><strong>Tekoälyn käyttö:</strong> Koodi kirjoitettu itse ja tarkistutettu tekoälyllä, joka osoitti muun muassa väärin kirjoitetun backgroundColor-ominaisuuden, kahdella elementillä olleen saman id-arvon ja puuttuneen tapahtumankuuntelijan. Tehtävien 6 ja 7 lähtökohta, eli pointer-tapahtumien käyttö ja Ball-luokan rakenne, syntyi tekoälyn kanssa keskustellen, minkä jälkeen muokkasin toteutuksen omaan muotoonsa.</p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Tehtävä</th><th>Pisteet</th><th>Kommentti</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="id"><a href="Harjoitukset_4/Tehtava1.html">H4T1</a></td><td class="pts">2/2</td><td class="note">Span-elementin klikkaus vaihtaa img-elementin src-arvon data-src-attribuutista luettuun kuvaan ja päivittää kuvatekstin; oletuksena näytetään car1.jpg.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_4/Tehtava2.html">H4T2</a></td><td class="pts">2/2</td><td class="note">hcpdata-taulukko käydään läpi for...of -silmukalla ja li-elementit luodaan DOMiin. Lista rakennetaan vain kerran, koska funktio palaa heti jos ul-elementissä on jo lapsia. Taulukon määrittelyä ei ole muutettu eikä ulkoisia kirjastoja käytetä.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_4/Tehtava3.html">H4T3</a></td><td class="pts">4/4</td><td class="note">SimpleToDo. Lisää-painike lisää tehtävän li-elementtinä, Tyhjää lista palauttaa alkutilan ja yksittäinen rivi poistuu klikkaamalla. Klikkaus käsitellään yhdellä addEventListener-kuuntelijalla ul-elementin tasolla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_4/Tehtava4.html">H4T4</a></td><td class="pts">6/6</td><td class="note">Pudotusvalikon change-tapahtuma tulostaa värikoodin muuttamatta taustaa, tekstikenttä päivittyy input-tapahtumassa reaaliajassa tulosalueen alimmalle riville ja numerot estetään sekä keydownilla että replace-siivouksella, joka kattaa myös liitetyn tekstin. Painike vaihtaa tulosalueen taustavärin.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_4/Tehtava5.html">H4T5</a></td><td class="pts">6/6</td><td class="note">Ostoslista. Lomake lisää tuotteen omana korttinaan omaan div-elementtiin, kortti näyttää nimen, hinnan, määrän ja loppusumman, ja Remove poistaa kortin. Syötteiden tarkistus hoituu selaimen required- ja min-validoinnilla.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_4/Tehtava6.html">H4T6</a></td><td class="pts">4/4</td><td class="note">Palloa siirretään pointerdown-, pointermove- ja pointerup-tapahtumilla. Tarttumakohta muistetaan, joten pallo ei hyppää kursorin keskelle, ja setPointerCapture pitää tapahtumat pallolla myös nopeassa liikkeessä.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_4/Tehtava7.html">H4T7</a></td><td class="pts">6/6</td><td class="note">Ball-luokka pitää sisällään pallon ominaisuudet, liikkeen ja piirron. Staattiset metodit arpovat pallojen määrän, koon, värin ja nopeuden, ja requestAnimationFrame liikuttaa kaikkia palloja kimpoillen reunoista. Monta palloa liikkuu yhtä aikaa.</td></tr>
+        </tbody>
+    </table>
+    </div>
 
-    <h2>Harjoitukset 5: JSON, Promise ja Fetch API</h2>
-    <p class="upcoming">Ei vielä aloitettu.</p>
+    <h2>Harjoitukset 5: JSON, Promise ja Fetch API (26 p) <span class="ai">AI20%</span></h2>
+    <p>Koontisivu: <a href="Harjoitukset_5/">lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/</a></p>
+    <p class="aiuse"><strong>Tekoälyn käyttö:</strong> Tekoälyä käytetty ratkaisujen tarkistamiseen ja tehtävän vaatimusten täyttämiseen. Käytetty myös ongelmien ratkaisuun. Kaikki ratkaisut käyty läpi ja muokattu itse.</p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Tehtävä</th><th>Pisteet</th><th>Kommentti</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="id"><a href="Harjoitukset_5/Tehtava1.html">H5T1</a></td><td class="pts">6/6</td><td class="note">data.json haetaan palvelimelta getHouses()-funktiolla ja renderHouses() rakentaa ilmoitukset DOMia muokkaamalla. JavaScript on erillisessä talot.js-tiedostossa ja tyylit erillisessä tyylit.css-tiedostossa; hinta muotoillaan Intl.NumberFormatilla suomalaiseen muotoon.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_5/Tehtava2.html">H5T2</a></td><td class="pts">2/2</td><td class="note">Painike hakee satunnaisen faktan päätepisteestä api.chucknorris.io/jokes/random ja näyttää vastauksen value-kentän. Virheet käsitellään try/catchilla ja painike lukitaan haun ajaksi.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_5/Tehtava3.html">H5T3</a></td><td class="pts">2/2</td><td class="note">Hinta haetaan CoinGeckon simple/price-päätepisteestä, koska CryptoComparen min-api vaatii nykyään API-avaimen ja palauttaa ilman sitä 401-vastauksen. Hinta muotoillaan Intl.NumberFormatilla euromuotoon ja mukana näytetään hakuhetken kellonaika.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_5/Tehtava4.html">H5T4</a></td><td class="pts">6/6</td><td class="note">Kaikki tuotteet haetaan päätepisteestä fakestoreapi.com/products ja näytetään korteissa kuvan, nimen, kategorian, hinnan ja arvosanan kanssa. Kategoriavalikko täytetään /products/categories-päätepisteestä ja rajaa näkymän yhteen tuoteryhmään.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_5/Tehtava5.html">H5T5</a></td><td class="pts">10/10</td><td class="note">Etunimet haetaan nimet.json-tiedostosta Fetch APIlla. Hakukenttä suodattaa nimen alkuosan perusteella merkkikoosta riippumatta, nuoli ylös ja alas selaavat tuloksia korostaen valinnan, Enter kopioi korostetun nimen kenttään tai tyhjentää kentän jos valintaa ei ole, ja Esc palauttaa alkutilan. Nimet ladataan kerran sivun avauksessa ja suodatus tehdään muistissa, jotta jokainen näppäinpainallus ei aiheuta omaa verkkopyyntöään.</td></tr>
+        </tbody>
+    </table>
+    </div>
 
-    <h2>Harjoitukset 6: Kartat web-ohjelmoinnissa</h2>
-    <p class="upcoming">Ei vielä aloitettu.</p>
+    <h2>Harjoitukset 6: Kartat web-ohjelmoinnissa (19 p) <span class="ai">AI15%</span></h2>
+    <p>Koontisivu: <a href="Harjoitukset_6/">lorzweq.dev/javascript-ohjelmointi/Harjoitukset_6/</a></p>
+    <p class="aiuse"><strong>Tekoälyn käyttö:</strong> Tekoälyä käytetty Leafletin ja markercluster-lisäosan käytön selvittämiseen. Tehtävä 2 kirjoitettu itse; tekoäly osoitti localStorage-tallennuksen väärän järjestyksen ja markerien piirtymisen kahteen kertaan.</p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr><th>Tehtävä</th><th>Pisteet</th><th>Kommentti</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="id"><a href="Harjoitukset_6/Tehtava1.html">H6T1</a></td><td class="pts">3/3</td><td class="note">Viisi suosikkikaupunkia Leaflet-kartalla OpenStreetMapin taustakartalla. Jokaisella kaupungilla on markeri, ja klikkaus avaa popupin nimen ja kuvauksen kanssa.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_6/Tehtava2.html">H6T2</a></td><td class="pts">6/6</td><td class="note">Suosikkipaikat lisätään web-lomakkeella ja tallennetaan selaimen Local Storageen JSON.stringify-metodilla. Sivun avautuessa paikat luetaan JSON.parse-metodilla ja piirretään kartalle, joten ne säilyvät myös selaimen sulkemisen yli.</td></tr>
+            <tr><td class="id"><a href="Harjoitukset_6/Tehtava3.html">H6T3</a></td><td class="pts">10/10</td><td class="note">49 golfkenttää luetaan golf.json-tiedostosta Fetch APIlla, ja markerit lisätään kartan sijaan Leaflet.markercluster-lisäosan klusterikerrokseen, joka niputtaa lähekkäiset kentät ja hajottaa ne zoomattaessa. Markerin klikkaus avaa popupin, jossa näkyvät kuva, kentän nimi, taso, osoite, puhelinnumero, sähköposti, verkkosivulinkki ja kuvausteksti; puuttuva kuva korvataan varakuvalla.</td></tr>
+        </tbody>
+    </table>
+    </div>
 
     <footer>Tekstimuotoinen versio Moodle-palautusta varten: <a href="kirjanpito.txt" style="color: var(--accent);">kirjanpito.txt</a></footer>
 </main>

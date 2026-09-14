@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 1</title>
+    <style>
+    .image-links span {
+        color: #0000ee;          
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .image-links span:hover {
+        color: #551a8b;          
+    }
+    </style>
+</head>
+<body>
+    <h1>Tehtävä 1</h1>
+        <div class="image-links">
+            <span data-src="car1.jpg" onclick="changeImage(event)">Kuva 1</span>
+            <span data-src="car2.jpg" onclick="changeImage(event)">Kuva 2</span>
+            <span data-src="car3.jpg" onclick="changeImage(event)">Kuva 3</span>
+            <span data-src="car4.jpg" onclick="changeImage(event)">Kuva 4</span>
+            <span data-src="car5.jpg" onclick="changeImage(event)">Kuva 5</span>
+            <span data-src="car6.jpg" onclick="changeImage(event)">Kuva 6</span>
+            <span data-src="car7.jpg" onclick="changeImage(event)">Kuva 7</span>
+            <span data-src="car8.jpg" onclick="changeImage(event)">Kuva 8</span>
+        </div>
+    <img id="picture" src="car1.jpg" alt="Kuva 1">
+    <p id="caption">Kuva 1</p>
+
+    <script>
+        function changeImage(event) {
+            const image = document.getElementById("picture");
+            const caption = document.getElementById("caption");
+            image.src = event.target.dataset.src;
+            image.alt = event.target.textContent;
+            caption.textContent = event.target.textContent;
+        }
+    </script>
+</body>
+</html>
