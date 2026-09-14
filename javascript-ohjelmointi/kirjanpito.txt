@@ -46,9 +46,9 @@ H1T10: 3/3p https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_1/tehtava10.
 
 HARJOITUKSET 2: JavaScript-perusteet 2 (32p)
 Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/
-Tekoälyn käyttö: AI15%
-      Ratkaisut kirjoitettu itse. Tekoälyä käytetty vianetsintään ja sen varmistamiseen, että toteutus vastaa
-      tehtävänannon vaatimuksia.
+Tekoälyn käyttö: AI10%
+      Ratkaisut kirjoitettu itse. Tekoälyä käytetty valmiiden ratkaisujen tarkistamiseen ja tehtävän
+      vaatimusten täyttämiseen.
 
 H2T1: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava1.html
        Nimi ja syntymävuosi lomakkeelta; ikä lasketaan Date-luokan getFullYear()-funktiolla ja tulos kirjoitetaan innerHTML:llä Show-painikkeen klikkauksesta.
@@ -69,7 +69,7 @@ H2T8: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_2/Tehtava8.h
 
 HARJOITUKSET 3: JavaScript-perusteet 3 (37p)
 Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/
-Tekoälyn käyttö: AI20%
+Tekoälyn käyttö: AI10%
       Koodi kirjoitettu itse. Tekoälyä käytetty virheiden etsintään ja tehtävänannon vaatimusten läpikäyntiin,
       esimerkiksi sisäkkäisen olion käsittelyssä ja hissin tilanhallinnassa.
 
@@ -106,7 +106,7 @@ H3T9: 10/10p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_3/Tehtava9
 HARJOITUKSET 4: DOM (30p)
 Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/
 Tekoälyn käyttö: AI25%
-      Tehtävät kirjoitettu itse ja tarkistutettu tekoälyllä, joka osoitti muun muassa väärin kirjoitetun
+      Koodi kirjoitettu itse ja tarkistutettu tekoälyllä, joka osoitti muun muassa väärin kirjoitetun
       backgroundColor-ominaisuuden, kahdella elementillä olleen saman id-arvon ja puuttuneen
       tapahtumankuuntelijan. Tehtävien 6 ja 7 lähtökohta, eli pointer-tapahtumien käyttö ja Ball-luokan
       rakenne, syntyi tekoälyn kanssa keskustellen, minkä jälkeen muokkasin toteutuksen omaan muotoonsa.
@@ -141,11 +141,9 @@ H4T7: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_4/Tehtava7.h
 
 HARJOITUKSET 5: JSON, Promise ja Fetch API (26p)
 Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/
-Tekoälyn käyttö: AI50%
-      Tekoälyä käytetty tehtävien 1, 4 ja 5 rungon laatimiseen ja rakenteen suunnitteluun sekä rajapintojen
-      JSON-muodon selvittämiseen. Tehtävät 2 ja 3 kirjoitettu itse; tekoäly auttoi tunnistamaan CryptoComparen
-      401-vastauksen syyksi puuttuvan API-avaimen, minkä vuoksi vaihdoin CoinGeckon rajapintaan. Kaikki
-      ratkaisut käyty läpi ja muokattu itse.
+Tekoälyn käyttö: AI20%
+      Tekoälyä käytetty ratkaisujen tarkistamiseen ja tehtävän vaatimusten täyttämiseen. Käytetty myös
+      ongelmien ratkaisuun. Kaikki ratkaisut käyty läpi ja muokattu itse.
 
 H5T1: 6/6p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/Tehtava1.html
        data.json haetaan palvelimelta getHouses()-funktiolla ja renderHouses() rakentaa ilmoitukset DOMia
@@ -171,10 +169,9 @@ H5T5: 10/10p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_5/Tehtava5
 
 HARJOITUKSET 6: Kartat web-ohjelmoinnissa (19p)
 Koontisivu: https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_6/
-Tekoälyn käyttö: AI45%
-      Tekoälyä käytetty Leafletin ja markercluster-lisäosan käytön selvittämiseen sekä tehtävien 1 ja 3 rungon
-      laatimiseen. Tehtävä 2 kirjoitettu itse; tekoäly osoitti localStorage-tallennuksen väärän järjestyksen
-      ja markerien piirtymisen kahteen kertaan.
+Tekoälyn käyttö: AI15%
+      Tekoälyä käytetty Leafletin ja markercluster-lisäosan käytön selvittämiseen. Tehtävä 2 kirjoitettu itse;
+      tekoäly osoitti localStorage-tallennuksen väärän järjestyksen ja markerien piirtymisen kahteen kertaan.
 
 H6T1: 3/3p  https://lorzweq.dev/javascript-ohjelmointi/Harjoitukset_6/Tehtava1.html
        Viisi suosikkikaupunkia Leaflet-kartalla OpenStreetMapin taustakartalla. Jokaisella kaupungilla on
